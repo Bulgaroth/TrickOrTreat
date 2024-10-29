@@ -97,8 +97,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 353acb89e8c55614ab26485dcce5a46c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
-  cameraRange: {x: -90, y: 90}
+  playerData: {fileID: 11400000, guid: af17d356061d4bd42a71e4690bc2caa1, type: 2}
+  headBobbingData: {fileID: 11400000, guid: 8f30b2c6577b08e46a972cbe03bf55d6, type: 2}
+  cameraRange: {x: -45, y: 45}
 --- !u!114 &3312427883707878006
 MonoBehaviour:
   m_ObjectHideFlags: 0

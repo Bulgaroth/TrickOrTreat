@@ -6,11 +6,11 @@ public class PlayerController : MonoBehaviour
 {
     #region Attributes
 
-    [SerializeField] private float speed;
+    [SerializeField] private SC_PlayerData playerData;
 
     [SerializeField] private Vector2 cameraRange;
     
-    private Camera camera;
+    private Camera mainCamera;
     private CharacterController _controller;
     
     private float verticaRotation;
@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
-        camera = Camera.main;
+        mainCamera = Camera.main;
         _controller = GetComponent<CharacterController>();
     }
 
@@ -39,27 +39,23 @@ public class PlayerController : MonoBehaviour
 
     void MovePlayer()
     {
-        Vector3 forward = transform.TransformDirection(Vector3.forward);
-        Vector3 right = transform.TransformDirection(Vector3.right);
+        float curSpeedX = playerData.playerSpeed * movements.x;
+        float curSpeedZ = playerData.playerSpeed * movements.z;
+        Vector3 moveDirection = (transform.forward * curSpeedZ) + (transform.right * curSpeedX);
         
-        float curSpeedX = speed * movements.z;
-        float curSpeedY = speed * movements.x;
-        Vector3 moveDirection = (forward * curSpeedX) + (right * curSpeedY);
-        
-        _controller.Move( moveDirection * speed * Time.deltaTime);
-        //transform.position += movements * speed * Time.deltaTime;
+        _controller.Move( moveDirection * Time.deltaTime);
     }
 
     void RotateCamera()
     {
         transform.Rotate(0, mouseRotation.x,0);
-
         
         verticaRotation -= mouseRotation.y;
         verticaRotation = Mathf.Clamp(verticaRotation, cameraRange.x, cameraRange.y);
-        camera.transform.localRotation = Quaternion.Euler(verticaRotation, 0, 0);
+        mainCamera.transform.localRotation = Quaternion.Euler(verticaRotation, 0, 0);
     }
-    
+            isCameraInPlace = true;
+    }
     
     #endregion
 
@@ -71,6 +67,8 @@ public class PlayerController : MonoBehaviour
         if (context.performed)
         {
             movements = new Vector3(context.ReadValue<Vector2>().x, 0f, context.ReadValue<Vector2>().y);
+
+            isCameraInPlace = false;
         }
         else if (context.canceled)
         {

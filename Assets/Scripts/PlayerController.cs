@@ -67,7 +67,7 @@ public class PlayerController : MonoBehaviour
 
     public void Move(InputAction.CallbackContext context)
     {
-        Debug.Log("Move");
+        //Debug.Log("Move");
         if (context.performed)
         {
             movements = new Vector3(context.ReadValue<Vector2>().x, 0f, context.ReadValue<Vector2>().y);

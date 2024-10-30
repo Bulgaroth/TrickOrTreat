@@ -36,6 +36,7 @@ public class PowerUpSpawner : MonoBehaviour
     {
         if (other.CompareTag("Player")) playerInTheWay = true;
     }
+
     private void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Player")) playerInTheWay = false;

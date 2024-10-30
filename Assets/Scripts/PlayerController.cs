@@ -1,4 +1,5 @@
-using System;
+
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
@@ -7,6 +8,7 @@ public class PlayerController : MonoBehaviour
 {
     #region Attributes
 
+    [Header("=== Player ===")]
     [SerializeField] private SC_PlayerData playerData;
 
     [SerializeField] private int playerHP;
@@ -20,6 +22,13 @@ public class PlayerController : MonoBehaviour
     private float verticaRotation;
     private Vector3 movements;
     private Vector2 mouseRotation;
+    
+    // Gun Related
+    [Header("=== Gun ===")] 
+    [SerializeField] private List<Rigidbody> bulletList;
+    [SerializeField] private float bulletPower;
+    [SerializeField] private Transform bulletSpawnPoint;
+    
     
     #endregion
 
@@ -77,6 +86,17 @@ public class PlayerController : MonoBehaviour
         mainCamera.transform.localRotation = Quaternion.Euler(verticaRotation, 0, 0);
     }
 
+
+    void Shoot()
+    {
+        // Instantiate the projectile at the position and rotation of this transform
+        Rigidbody clone;
+        clone = Instantiate(bulletList[Random.Range(0, bulletList.Count)], bulletSpawnPoint.position, bulletSpawnPoint.rotation);
+
+        // Give the cloned object an initial velocity along the current
+        // object's Z axis
+        clone.velocity = mainCamera.transform.forward * bulletPower;
+    }
     
     
     #endregion
@@ -103,6 +123,9 @@ public class PlayerController : MonoBehaviour
         Debug.Log($"Player heal {heal} hp");
         
         playerHP += heal;
+        
+        if (playerHP > playerData.playerBaseHP)
+            playerHP = playerData.playerBaseHP;
     }
 
     void OnTakeDamage(int damage)
@@ -140,6 +163,14 @@ public class PlayerController : MonoBehaviour
     public void Look(InputAction.CallbackContext context)
     {
         mouseRotation = context.ReadValue<Vector2>();
+    }
+
+    public void Fire(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            Shoot();
+        }
     }
 
     #endregion

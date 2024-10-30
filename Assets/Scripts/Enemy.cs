@@ -6,7 +6,7 @@ public class Enemy : MonoBehaviour
 {
     #region Attributes
 
-    [SerializeField] private const int _baseHP = 5;
+    [SerializeField] private int _baseHP = 5;
     [SerializeField] private int _currentHP;
 
     [SerializeField] private int damage = 1;

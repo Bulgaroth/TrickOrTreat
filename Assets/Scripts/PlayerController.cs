@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviour
 
     #region Events
 
-    
+    [HideInInspector] public UnityEvent<int> Heal;
     [HideInInspector] public UnityEvent<int> TakeDamage;
     [HideInInspector] public UnityEvent Die;
     
@@ -85,6 +85,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnEnable()
     {
+        Heal.AddListener(OnHeal);
         TakeDamage.AddListener(OnTakeDamage);
         Die.AddListener(OnDie);
     }
@@ -92,8 +93,16 @@ public class PlayerController : MonoBehaviour
 
     private void OnDisable()
     {
+        Heal.RemoveListener(OnHeal);
         TakeDamage.RemoveListener(OnTakeDamage);
         Die.RemoveListener(OnDie);
+    }
+
+    private void OnHeal(int heal)
+    {
+        Debug.Log($"Player heal {heal} hp");
+        
+        playerHP += heal;
     }
 
     void OnTakeDamage(int damage)

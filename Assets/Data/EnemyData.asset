@@ -9,11 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 86b6dd0b3c74c03418647039709cc0cd, type: 3}
-  m_Name: PlayerData
+  m_Script: {fileID: 11500000, guid: 50f59acec1dc1954fb8aec90fc045936, type: 3}
+  m_Name: EnemyData
   m_EditorClassIdentifier: 
-  playerBaseHP: 20
-  playerSpeed: 10
-  addedDamage: 0
-  healAmount: 5
-  slowTime: 4
+  sprite: {fileID: -269694165, guid: b779ecf001bfa8f4f96c31ef2d09a556, type: 3}
+  health: 5
+  damage: 1
+  xpGained: 1

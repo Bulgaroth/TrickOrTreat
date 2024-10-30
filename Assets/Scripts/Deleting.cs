@@ -1,15 +1,22 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public class Deleting : MonoBehaviour
 {
-    
-    //deleting the clone when he hit an other colider
-    void OnCollisionEnter(Collision other)
-        {
-            Destroy(this.gameObject);
-        }
+    [SerializeField] private int damage;
 
 
+    private void OnTriggerEnter(Collider other)
+    {
+        //deleting the clone when he hit an other colider
+
+        if (other.transform.CompareTag("Player")) return;
+
+        Debug.Log("Hit");
+
+        if (other.transform.CompareTag("Enemy"))
+            other.gameObject.GetComponent<Enemy>().TakeDamage.Invoke(damage);
+
+        Destroy(gameObject);
+    }
 }

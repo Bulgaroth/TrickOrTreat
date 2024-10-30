@@ -6,6 +6,4 @@ using UnityEngine;
 public class SC_PlayerData : ScriptableObject
 {
     public float playerSpeed;
-
-    public bool option_HeadBobbing;
 }

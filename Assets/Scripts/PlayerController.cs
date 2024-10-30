@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     private float verticaRotation;
     private Vector3 movements;
     private Vector2 mouseRotation;
+    
     #endregion
     
     
@@ -43,6 +44,8 @@ public class PlayerController : MonoBehaviour
         float curSpeedZ = playerData.playerSpeed * movements.z;
         Vector3 moveDirection = (transform.forward * curSpeedZ) + (transform.right * curSpeedX);
         
+        
+        
         _controller.Move( moveDirection * Time.deltaTime);
     }
 
@@ -54,8 +57,6 @@ public class PlayerController : MonoBehaviour
         verticaRotation = Mathf.Clamp(verticaRotation, cameraRange.x, cameraRange.y);
         mainCamera.transform.localRotation = Quaternion.Euler(verticaRotation, 0, 0);
     }
-            isCameraInPlace = true;
-    }
     
     #endregion
 
@@ -63,12 +64,9 @@ public class PlayerController : MonoBehaviour
 
     public void Move(InputAction.CallbackContext context)
     {
-        Debug.Log("Move");
         if (context.performed)
         {
             movements = new Vector3(context.ReadValue<Vector2>().x, 0f, context.ReadValue<Vector2>().y);
-
-            isCameraInPlace = false;
         }
         else if (context.canceled)
         {

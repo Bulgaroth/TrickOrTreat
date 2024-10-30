@@ -68,13 +68,13 @@ public class HeadBobbing : MonoBehaviour
         Vector3 pos = Vector3.zero;
         pos.y += Mathf.Sin(Time.time * frequency) * amplitude;
         pos.x += Mathf.Cos(Time.time * frequency / 2) * amplitude * 2;
-        Debug.Log($"StepMotion: {pos}");
+        //Debug.Log($"StepMotion: {pos}");
         return pos;
     }
 
     private void PlayMotion(Vector3 motion)
     {
-        Debug.Log("Play Motion");
+        //Debug.Log("Play Motion");
         
         _camera.transform.localPosition += motion;
     }

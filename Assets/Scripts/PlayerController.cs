@@ -6,16 +6,19 @@ public class PlayerController : MonoBehaviour
 {
     #region Attributes
 
-    [SerializeField] private float speed;
+    [SerializeField] private SC_PlayerData playerData;
 
     [SerializeField] private Vector2 cameraRange;
+    [SerializeField] private float gravity = 100.0f;
+
     
-    private Camera camera;
+    private Camera mainCamera;
     private CharacterController _controller;
     
     private float verticaRotation;
     private Vector3 movements;
     private Vector2 mouseRotation;
+    
     #endregion
     
     
@@ -23,7 +26,7 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
-        camera = Camera.main;
+        mainCamera = Camera.main;
         _controller = GetComponent<CharacterController>();
     }
 
@@ -39,27 +42,30 @@ public class PlayerController : MonoBehaviour
 
     void MovePlayer()
     {
-        Vector3 forward = transform.TransformDirection(Vector3.forward);
-        Vector3 right = transform.TransformDirection(Vector3.right);
+        float curSpeedX = playerData.playerSpeed * movements.x;
+        float curSpeedZ = playerData.playerSpeed * movements.z;
+        Vector3 moveDirection = (transform.forward * curSpeedZ) + (transform.right * curSpeedX);
         
-        float curSpeedX = speed * movements.z;
-        float curSpeedY = speed * movements.x;
-        Vector3 moveDirection = (forward * curSpeedX) + (right * curSpeedY);
+        ApplyGravity(ref moveDirection);
         
-        _controller.Move( moveDirection * speed * Time.deltaTime);
-        //transform.position += movements * speed * Time.deltaTime;
+        _controller.Move( moveDirection * Time.deltaTime);
+    }
+    
+    void ApplyGravity(ref Vector3 moveDirection)
+    {
+        if (_controller.isGrounded) return;
+
+        moveDirection.y -= gravity * Time.deltaTime;
     }
 
     void RotateCamera()
     {
         transform.Rotate(0, mouseRotation.x,0);
-
         
         verticaRotation -= mouseRotation.y;
         verticaRotation = Mathf.Clamp(verticaRotation, cameraRange.x, cameraRange.y);
-        camera.transform.localRotation = Quaternion.Euler(verticaRotation, 0, 0);
+        mainCamera.transform.localRotation = Quaternion.Euler(verticaRotation, 0, 0);
     }
-    
     
     #endregion
 
@@ -67,7 +73,6 @@ public class PlayerController : MonoBehaviour
 
     public void Move(InputAction.CallbackContext context)
     {
-        //Debug.Log("Move");
         if (context.performed)
         {
             movements = new Vector3(context.ReadValue<Vector2>().x, 0f, context.ReadValue<Vector2>().y);

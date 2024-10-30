@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
@@ -8,9 +9,10 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private SC_PlayerData playerData;
 
+    [SerializeField] private int playerHP;
+    
     [SerializeField] private Vector2 cameraRange;
     [SerializeField] private float gravity = 100.0f;
-
     
     private Camera mainCamera;
     private CharacterController _controller;
@@ -20,7 +22,14 @@ public class PlayerController : MonoBehaviour
     private Vector2 mouseRotation;
     
     #endregion
+
+    #region Events
+
     
+    [HideInInspector] public UnityEvent<int> TakeDamage;
+    [HideInInspector] public UnityEvent Die;
+    
+    #endregion
     
     #region Unity API
 
@@ -28,6 +37,7 @@ public class PlayerController : MonoBehaviour
     {
         mainCamera = Camera.main;
         _controller = GetComponent<CharacterController>();
+        playerHP = playerData.playerBaseHP;
     }
 
     void Update()
@@ -66,9 +76,44 @@ public class PlayerController : MonoBehaviour
         verticaRotation = Mathf.Clamp(verticaRotation, cameraRange.x, cameraRange.y);
         mainCamera.transform.localRotation = Quaternion.Euler(verticaRotation, 0, 0);
     }
+
+    
     
     #endregion
 
+    #region Event Handlers
+
+    private void OnEnable()
+    {
+        TakeDamage.AddListener(OnTakeDamage);
+        Die.AddListener(OnDie);
+    }
+
+
+    private void OnDisable()
+    {
+        TakeDamage.RemoveListener(OnTakeDamage);
+        Die.RemoveListener(OnDie);
+    }
+
+    void OnTakeDamage(int damage)
+    {
+        Debug.Log($"Player take {damage} damage");
+        
+        playerHP -= damage;
+        
+        if (playerHP <= 0)
+            Die.Invoke();
+    }
+
+    void OnDie()
+    {
+        Debug.Log($"Player died");
+    }
+
+    #endregion
+    
+    
     #region Inputs
 
     public void Move(InputAction.CallbackContext context)

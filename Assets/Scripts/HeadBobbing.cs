@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem.Controls;
 
 public class HeadBobbing : MonoBehaviour
 {
@@ -74,6 +75,7 @@ public class HeadBobbing : MonoBehaviour
     private void PlayMotion(Vector3 motion)
     {
         Debug.Log("Play Motion");
+        
         _camera.transform.localPosition += motion;
     }
 
@@ -85,7 +87,7 @@ public class HeadBobbing : MonoBehaviour
             return;
         }
         
-        _camera.transform.localPosition = Vector3.Lerp(_camera.transform.localPosition, _startPos, 1 * Time.deltaTime);
+        _camera.transform.localPosition = Vector3.Lerp(_camera.transform.localPosition, _startPos, 1.5f * Time.deltaTime);
     }
 
     private Vector3 FocusTarget()

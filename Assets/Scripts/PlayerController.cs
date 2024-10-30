@@ -9,6 +9,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private SC_PlayerData playerData;
 
     [SerializeField] private Vector2 cameraRange;
+    [SerializeField] private float gravity = 100.0f;
+
     
     private Camera mainCamera;
     private CharacterController _controller;
@@ -44,9 +46,16 @@ public class PlayerController : MonoBehaviour
         float curSpeedZ = playerData.playerSpeed * movements.z;
         Vector3 moveDirection = (transform.forward * curSpeedZ) + (transform.right * curSpeedX);
         
-        
+        ApplyGravity(ref moveDirection);
         
         _controller.Move( moveDirection * Time.deltaTime);
+    }
+    
+    void ApplyGravity(ref Vector3 moveDirection)
+    {
+        if (_controller.isGrounded) return;
+
+        moveDirection.y -= gravity * Time.deltaTime;
     }
 
     void RotateCamera()

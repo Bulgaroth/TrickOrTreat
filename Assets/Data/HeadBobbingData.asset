@@ -12,6 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47c609461ab1d854e99f9ead587fd524, type: 3}
   m_Name: HeadBobbingData
   m_EditorClassIdentifier: 
-  frequency: 10000
-  amount: 0.01
-  smooth: 10
+  frequency: 10
+  amplitude: 0.01

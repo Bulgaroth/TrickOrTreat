@@ -99,8 +99,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerData: {fileID: 11400000, guid: af17d356061d4bd42a71e4690bc2caa1, type: 2}
-  headBobbingData: {fileID: 11400000, guid: 8f30b2c6577b08e46a972cbe03bf55d6, type: 2}
   cameraRange: {x: -45, y: 45}
+  gravity: 100
 --- !u!114 &12126312372480059
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -114,8 +114,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _isEnable: 1
-  _frequency: 24.7
-  _amplitude: 0.1
+  _data: {fileID: 0}
   _cameraHolder: {fileID: 3160005931238491796}
 --- !u!114 &3312427883707878006
 MonoBehaviour:

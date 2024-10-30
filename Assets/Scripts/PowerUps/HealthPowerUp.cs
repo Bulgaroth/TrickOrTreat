@@ -8,7 +8,7 @@ public class HealthPowerUp : PowerUp
 
     protected override void ApplyEffects(PlayerController ctrl)
     {
+        ctrl.Heal.Invoke(healAmount);
         base.ApplyEffects(ctrl);
-        //ctrl.AddLife
     }
 }

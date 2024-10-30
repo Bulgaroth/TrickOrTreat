@@ -19,7 +19,7 @@ public class PoolManager : MonoBehaviour
 
     #region Singleton
 
-    public static PoolManager instance;
+	public static PoolManager instance;
     private void Awake() => instance = this;
     #endregion
 
@@ -30,7 +30,7 @@ public class PoolManager : MonoBehaviour
 			var objectPool = new Queue<GameObject>();
 			for (int i = 0; i < pool.size; ++i)
 			{
-				var obj = Instantiate(pool.prefab);
+				var obj = Instantiate(pool.prefab, transform);
 				objectPool.Enqueue(obj);
 				obj.SetActive(false);
 			}
@@ -42,7 +42,7 @@ public class PoolManager : MonoBehaviour
 	public GameObject GetElement(string tag)
 	{
 		var obj = poolDictionnary[tag].Dequeue();
-		obj.SetActive(true);
+		//obj.SetActive(true);
         poolDictionnary[tag].Enqueue(obj);
         return obj;
 	}

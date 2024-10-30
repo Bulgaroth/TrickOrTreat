@@ -6,10 +6,10 @@ public class PowerUp : MonoBehaviour
 {
 	private void OnEnable()
 	{
-		LeanTween.moveY(gameObject, 0.75f, 1f).setLoopPingPong().setEaseInOutSine();
+		LeanTween.moveLocalY(gameObject, 0.5f, 1f).setLoopPingPong().setEaseInOutSine();
 	}
 
-	private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other)
 	{
 		if (!other.CompareTag("Player")) return;
 		

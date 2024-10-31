@@ -178,12 +178,14 @@ public class PlayerController : MonoBehaviour
 		if (playerHP > playerData.playerBaseHP)
 			playerHP = playerData.playerBaseHP;
 
+		characterAudio.PlayOneShot(powerUpSounds[0]);
 		healthBar.SetHealth(playerHP);
 		gunAnimator.SetTrigger("Eat");
 	}
 
-	private void OnBulletTime()
+	public void OnBulletTime()
 	{
+		characterAudio.PlayOneShot(powerUpSounds[1]);
 		gunAnimator.SetTrigger("Eat");
 	}
 

@@ -4395,6 +4395,10 @@ PrefabInstance:
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 1309141073}
+    - target: {fileID: 8165360333709108678, guid: 5f1f59f6dc0a17d4eac5049da5832e4c, type: 3}
+      propertyPath: gunAnimator
+      value: 
+      objectReference: {fileID: 352823167}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4878,6 +4882,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 8193946149213386838, guid: 13b23f35e616a8b45be94a4b9164bcb4, type: 3}
   m_PrefabInstance: {fileID: 343748935}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &352823167 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 7764132270324739950, guid: 5f1f59f6dc0a17d4eac5049da5832e4c, type: 3}
+  m_PrefabInstance: {fileID: 308670889}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &353096788
 PrefabInstance:
@@ -50434,7 +50443,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: cd009981c30ee084eb4e0f5c7f49c51c, type: 2}
+  - {fileID: 2100000, guid: 6dbd9908bf812524eb17c57da467899b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -67538,7 +67547,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: cd009981c30ee084eb4e0f5c7f49c51c, type: 2}
+  - {fileID: 2100000, guid: 6dbd9908bf812524eb17c57da467899b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

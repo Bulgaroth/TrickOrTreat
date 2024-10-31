@@ -449,6 +449,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 1252888ece23c804bbd89e1691997a31, type: 3}
   - {fileID: 8300000, guid: 20c4e8891c069a945b8f3ae6354a5903, type: 3}
   visuals: {fileID: 1902840677784375362}
+  deathParticles: {fileID: 1892620234592488456, guid: 59d3b59c936e6424195774f01a4b5016, type: 3}
   TakeDamage:
     m_PersistentCalls:
       m_Calls: []

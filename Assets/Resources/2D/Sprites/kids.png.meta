@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 9b70cafb1a7a9a04fa03c9d2690a0db2
+guid: dd0da866a78f0ee41b144f3fcc30d727
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -69,9 +69,9 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 1024
+    maxTextureSize: 2048
     resizeAlgorithm: 0
-    textureFormat: 4
+    textureFormat: -1
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
@@ -97,34 +97,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: vampire_0
+      name: kids_0
       rect:
         serializedVersion: 2
-        x: 18
-        y: 295
-        width: 558
-        height: 548
-      alignment: 9
-      pivot: {x: 0.9211372, y: 0.3519314}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6f2c299a71ec40a4dad742b6da9bb020
-      internalID: -1237109323
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: vampire_1
-      rect:
-        serializedVersion: 2
-        x: 680
-        y: 12
-        width: 329
-        height: 838
+        x: 20
+        y: 258
+        width: 422
+        height: 520
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -132,8 +111,71 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 025abe6e336f502469ae0da6cde59a71
-      internalID: -934194767
+      spriteID: 0d70bad9dfcc551499a1fb47f3f588e9
+      internalID: 1434408047
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kids_1
+      rect:
+        serializedVersion: 2
+        x: 471
+        y: 103
+        width: 516
+        height: 678
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe1df08e72402734aa15e3e997b72a7d
+      internalID: -1080964097
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kids_2
+      rect:
+        serializedVersion: 2
+        x: 1013
+        y: 44
+        width: 853
+        height: 752
+      alignment: 9
+      pivot: {x: 0.50132746, y: 0.2982262}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df3db4ba01acb5e45b5ef78f40026291
+      internalID: -58228348
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kids_3
+      rect:
+        serializedVersion: 2
+        x: 153
+        y: 31
+        width: 57
+        height: 185
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ad0e6526d1866b458a4e0612107ec03
+      internalID: -499331378
       vertices: []
       indices: 
       edges: []
@@ -141,7 +183,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 9bb13aa7e449e3b4eb137a79926bad9e
     internalID: 0
     vertices: []
     indices: 
@@ -149,8 +191,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      vampire_0: -1237109323
-      vampire_1: -934194767
+      kids_0: 1434408047
+      kids_1: -1080964097
+      kids_2: -58228348
+      kids_3: -499331378
+      kids_4: -872095850
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

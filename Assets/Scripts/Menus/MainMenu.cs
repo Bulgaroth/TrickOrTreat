@@ -15,6 +15,11 @@ public class MainMenu : MonoBehaviour
         //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
+    public void RestartScene()
+    {
+        SceneTransitionManager.LoadSceneWithTransition(SceneManager.GetActiveScene().buildIndex);
+    }
+
     public void OpenCredits()
     {
         SceneTransitionManager.LoadSceneWithTransition("Credits");

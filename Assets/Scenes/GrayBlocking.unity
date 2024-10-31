@@ -4383,18 +4383,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 7932632101523423785, guid: 5f1f59f6dc0a17d4eac5049da5832e4c, type: 3}
-      propertyPath: m_Volume
-      value: 0.3
-      objectReference: {fileID: 0}
     - target: {fileID: 8165360333709108678, guid: 5f1f59f6dc0a17d4eac5049da5832e4c, type: 3}
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 1309141073}
-    - target: {fileID: 8165360333709108678, guid: 5f1f59f6dc0a17d4eac5049da5832e4c, type: 3}
-      propertyPath: gunAnimator
-      value: 
-      objectReference: {fileID: 352823167}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4878,11 +4870,6 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 8193946149213386838, guid: 13b23f35e616a8b45be94a4b9164bcb4, type: 3}
   m_PrefabInstance: {fileID: 343748935}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &352823167 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 7764132270324739950, guid: 5f1f59f6dc0a17d4eac5049da5832e4c, type: 3}
-  m_PrefabInstance: {fileID: 308670889}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &353096788
 PrefabInstance:
@@ -51457,26 +51444,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2094859359}
     m_Modifications:
-    - target: {fileID: 2313140826975329334, guid: 4bdd0408658822b438c98dae294ff999, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 2.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2313140826975329334, guid: 4bdd0408658822b438c98dae294ff999, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 2.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2313140826975329334, guid: 4bdd0408658822b438c98dae294ff999, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 2.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2313140826975329334, guid: 4bdd0408658822b438c98dae294ff999, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.297
-      objectReference: {fileID: 0}
-    - target: {fileID: 2313140826975329334, guid: 4bdd0408658822b438c98dae294ff999, type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7117065956566362642, guid: 4bdd0408658822b438c98dae294ff999, type: 3}
       propertyPath: m_Name
       value: PowerUpSpawner
@@ -51521,46 +51488,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8870592997393477982, guid: 4bdd0408658822b438c98dae294ff999, type: 3}
-      propertyPath: powerUpTypes.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8870592997393477982, guid: 4bdd0408658822b438c98dae294ff999, type: 3}
-      propertyPath: powerUpTypes.Array.data[1]
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 7117065956566362642, guid: 4bdd0408658822b438c98dae294ff999, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1904439433}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4bdd0408658822b438c98dae294ff999, type: 3}
---- !u!1 &1904439432 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7117065956566362642, guid: 4bdd0408658822b438c98dae294ff999, type: 3}
-  m_PrefabInstance: {fileID: 1904439431}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1904439433
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1904439432}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_OverrideArea: 0
-  m_Area: 0
-  m_OverrideGenerateLinks: 0
-  m_GenerateLinks: 0
-  m_IgnoreFromBuild: 1
-  m_ApplyToChildren: 1
-  m_AffectedAgents: ffffffff
 --- !u!1001 &1906889701
 PrefabInstance:
   m_ObjectHideFlags: 0

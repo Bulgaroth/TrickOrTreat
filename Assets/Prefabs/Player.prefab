@@ -44,7 +44,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.3
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -849,10 +849,9 @@ MonoBehaviour:
   characterAudio: {fileID: 5991245017579254236}
   gunAudio: {fileID: 8666949533036486615}
   powerUpSounds:
-  - {fileID: 8300000, guid: 80d444d2309b4304896b045f637572a6, type: 3}
-  - {fileID: 8300000, guid: 9157e529490b3884ea212cf247c8f0c7, type: 3}
-  - {fileID: 8300000, guid: 5bc2e1c0a70aedf4aa5fe9f3966f8150, type: 3}
-  - {fileID: 8300000, guid: 68d5a20642883bd438b837e1e1b825de, type: 3}
+  - {fileID: 8300000, guid: 322e76bd4fb072f4298f82ff30bf178f, type: 3}
+  - {fileID: 8300000, guid: 479051b1aeb403b46abe10f581472646, type: 3}
+  - {fileID: 8300000, guid: 7c66c47d1497d1040b93047ec79a56a0, type: 3}
   commentSounds:
   - {fileID: 8300000, guid: 5a21f736e46ad56419a05b5ace9de997, type: 3}
   - {fileID: 8300000, guid: 21a8fff0e60f0144182011898479aee6, type: 3}
@@ -860,6 +859,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: d5a67f19160ebc74491da7283e3abe4b, type: 3}
   gunSounds:
   - {fileID: 8300000, guid: 2411f47188603a748832e6bd256bdb4d, type: 3}
+  gunAnimator: {fileID: 7764132270324739950}
   playerHP: 0
   cameraRange: {x: -45, y: 45}
   gravity: 500

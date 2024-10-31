@@ -109,6 +109,7 @@ public class PlayerController : MonoBehaviour
 	void Shoot()
 	{
 		if (!canShoot) return;
+		if (!roaming) return;
 		canShoot = false;
 		StartCoroutine(ShootCooldown());
 

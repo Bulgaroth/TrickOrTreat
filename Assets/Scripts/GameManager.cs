@@ -5,43 +5,58 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager Instance;
+	public static GameManager Instance;
 
-    #region Attributes
-    
-    private PoolManager PoolManager;
-    private SpawnManager SpawnManager;
+	#region Attributes
+	
+	private PoolManager PoolManager;
+	private SpawnManager SpawnManager;
 
-    [SerializeField] private PlayerController player;
-    
-    #endregion
-    
-    #region Unity API
+	[SerializeField] private PlayerController player;
+	[SerializeField] private Timer timer;
+	
+	#endregion
+	
+	#region Unity API
 
-    private void Awake()
-    {
-        Instance = this;
-        
-        PoolManager = PoolManager.instance;
-        SpawnManager = SpawnManager.Instance;
+	private void Awake()
+	{
+		Instance = this;
+		
+		PoolManager = PoolManager.instance;
+		SpawnManager = SpawnManager.Instance;
 
-        player = FindObjectOfType<PlayerController>();
-    }
+		player = FindObjectOfType<PlayerController>();
+	}
 
-    private void Start()
-    {
-        SpawnManager.StartSpawning.Invoke();
-    }
+	private void Start()
+	{
+		SpawnManager.StartSpawning.Invoke();
+	}
 
-    #endregion
+	#endregion
 
-    #region Methods
+	#region Methods
 
-    public PlayerController GetPlayer()
-    {
-        return player;
-    }
+	public PlayerController GetPlayer()
+	{
+		return player;
+	}
 
-    #endregion
-    
+	public void Pause()
+	{
+		SpawnManager.StopSpawning.Invoke();
+		SpawnManager.TogglePause(true);
+		timer.paused = true;
+	}
+
+	public void Play()
+	{
+		SpawnManager.StartSpawning.Invoke();
+		SpawnManager.TogglePause(false);
+		timer.paused = false;
+	}
+
+	#endregion
+
 }

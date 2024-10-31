@@ -31,6 +31,7 @@ public class Enemy : MonoBehaviour
 
 	public UnityEvent<int,bool> TakeDamage;
 	public UnityEvent Die;
+	private bool paused;
 
 	#endregion
 	
@@ -48,7 +49,7 @@ public class Enemy : MonoBehaviour
 
 	void Update()
 	{
-		if (dead) return;
+		if (dead || paused) return;
 
 		if (monsterSoundReady) PlayMonsterSound();
 		//transform.LookAt(player.transform, Vector3.up);
@@ -101,13 +102,27 @@ public class Enemy : MonoBehaviour
 
 	void OnDie()
 	{
-		Instantiate(deathParticles, transform.position, Quaternion.identity);
+		Instantiate(deathParticles, transform.position + Vector3.up, Quaternion.identity);
 		XPManager.instance.AddXP(data.xpGained);
 		visuals.SetActive(false);
 		dead = true;
 		agent.enabled = false;
 		
-		SpawnManager.Instance.EnemyKilled.Invoke();
+		SpawnManager.Instance.EnemyKilled.Invoke(this);
+	}
+
+	public void Pause()
+	{
+		paused = true;
+		agent.enabled = false;
+		aS.Pause();
+	}
+
+	public void Play()
+	{
+		paused = false;
+		agent.enabled = true;
+		aS.Play();
 	}
 
 	void PlayHitSound(bool headshot)

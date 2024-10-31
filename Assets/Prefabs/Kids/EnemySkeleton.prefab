@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 428427325089771973}
   - component: {fileID: 9095670663695676033}
   - component: {fileID: 8373069987142632723}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Body
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -118,7 +118,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6540227045342127486}
   - component: {fileID: 8927358614297916891}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Head
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -489,7 +489,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1732645314095941069}
   - component: {fileID: 3718296636352637339}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: AdditionalCollider
   m_TagString: Enemy
   m_Icon: {fileID: 0}

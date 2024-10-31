@@ -18,8 +18,8 @@ TagManager:
   - UI
   - EnemyAttack
   - Bullet
-  - 
-  - 
+  - Player
+  - EnemyHitBox
   - 
   - 
   - 

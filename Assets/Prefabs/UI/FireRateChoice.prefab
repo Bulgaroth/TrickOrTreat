@@ -224,7 +224,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 3
-  value: 1.1
+  value: 0.9
 --- !u!1 &5323704367182510801
 GameObject:
   m_ObjectHideFlags: 0

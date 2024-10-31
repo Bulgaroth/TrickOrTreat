@@ -1,5 +1,5 @@
+using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
@@ -17,7 +17,9 @@ public class PlayerController : MonoBehaviour
 	[SerializeField] private AudioClip[] powerUpSounds;
 	[SerializeField] private AudioClip[] commentSounds;
 	[SerializeField] private AudioClip[] gunSounds;
+	[SerializeField] private Animator gunAnimator;
 
+	bool canShoot = true;
 	[SerializeField] private int playerHP;
 	
 	[SerializeField] private Vector2 cameraRange;
@@ -102,6 +104,10 @@ public class PlayerController : MonoBehaviour
 
 	void Shoot()
 	{
+		if (!canShoot) return;
+		canShoot = false;
+		StartCoroutine(ShootCooldown());
+
 		// Instantiate the projectile at the position and rotation of this transform
 		Rigidbody clone;
 		clone = Instantiate(bulletList[Random.Range(0, bulletList.Count)], bulletSpawnPoint.position, bulletSpawnPoint.rotation);
@@ -112,6 +118,7 @@ public class PlayerController : MonoBehaviour
 
 		gunAudio.pitch = Random.Range(0.9f, 1.1f);
 		gunAudio.PlayOneShot(gunSounds[0]);
+		gunAnimator.SetTrigger("Shoot");
 	}
 
 	void CheckGroundType()
@@ -172,6 +179,12 @@ public class PlayerController : MonoBehaviour
 			playerHP = playerData.playerBaseHP;
 
 		healthBar.SetHealth(playerHP);
+		gunAnimator.SetTrigger("Eat");
+	}
+
+	private void OnBulletTime()
+	{
+		gunAnimator.SetTrigger("Eat");
 	}
 
 	void OnTakeDamage(int damage)
@@ -238,4 +251,10 @@ public class PlayerController : MonoBehaviour
 	}
 
 	#endregion
+
+	private IEnumerator ShootCooldown()
+	{
+		yield return new WaitForSeconds(playerData.fireRate);
+		canShoot = true;
+	}
 }

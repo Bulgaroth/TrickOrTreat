@@ -5,7 +5,6 @@ public class Deleting : MonoBehaviour
 {
     [SerializeField] private int damage;
 
-
     private void OnTriggerEnter(Collider other)
     {
         //deleting the clone when he hit an other colider

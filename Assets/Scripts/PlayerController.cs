@@ -1,5 +1,5 @@
-
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
@@ -28,8 +28,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private List<Rigidbody> bulletList;
     [SerializeField] private float bulletPower;
     [SerializeField] private Transform bulletSpawnPoint;
-    
-    
+
+
     #endregion
 
     #region Events
@@ -37,12 +37,18 @@ public class PlayerController : MonoBehaviour
     [HideInInspector] public UnityEvent<int> Heal;
     [HideInInspector] public UnityEvent<int> TakeDamage;
     [HideInInspector] public UnityEvent Die;
-    
-    #endregion
-    
-    #region Unity API
 
-    private void Awake()
+	[HideInInspector] public UnityEvent<int> AddMaxLife;
+	[HideInInspector] public UnityEvent<float> AddSpeed;
+	[HideInInspector] public UnityEvent<int> AddDmg;
+	[HideInInspector] public UnityEvent<float> AddFireRate;
+	[HideInInspector] public UnityEvent<float> AddPowerUpEfficiency;
+
+	#endregion
+
+	#region Unity API
+
+	private void Awake()
     {
         mainCamera = Camera.main;
         _controller = GetComponent<CharacterController>();
@@ -105,6 +111,12 @@ public class PlayerController : MonoBehaviour
 
     private void OnEnable()
     {
+        AddMaxLife.AddListener(OnAddMaxLife);
+        AddDmg.AddListener(OnAddDmg);
+        AddSpeed.AddListener(OnAddSpeed);
+		AddFireRate.AddListener(OnAddFireRate);
+		AddPowerUpEfficiency.AddListener(OnAddPowerUpEfficiency);
+        
         Heal.AddListener(OnHeal);
         TakeDamage.AddListener(OnTakeDamage);
         Die.AddListener(OnDie);
@@ -113,7 +125,13 @@ public class PlayerController : MonoBehaviour
 
     private void OnDisable()
     {
-        Heal.RemoveListener(OnHeal);
+		AddMaxLife.RemoveListener(OnAddMaxLife);
+		AddDmg.RemoveListener(OnAddDmg);
+		AddSpeed.RemoveListener(OnAddSpeed);
+		AddFireRate.RemoveListener(OnAddFireRate);
+		AddPowerUpEfficiency.RemoveListener(OnAddPowerUpEfficiency);
+
+		Heal.RemoveListener(OnHeal);
         TakeDamage.RemoveListener(OnTakeDamage);
         Die.RemoveListener(OnDie);
     }
@@ -143,12 +161,27 @@ public class PlayerController : MonoBehaviour
         Debug.Log($"Player died");
     }
 
-    #endregion
-    
-    
-    #region Inputs
+    void OnAddMaxLife(int amount)
+    {
+        playerData.playerBaseHP += amount;
+        // TODO Update UI.
 
-    public void Move(InputAction.CallbackContext context)
+    }
+    void OnAddDmg(int amount) => playerData.addedDamage += amount;
+    void OnAddSpeed(float multiplier) => playerData.playerSpeed *= multiplier;
+    void OnAddFireRate(float multiplier) => playerData.fireRate *= multiplier;
+
+    void OnAddPowerUpEfficiency(float multiplier)
+    {
+        playerData.healAmount *= (int)multiplier;
+        playerData.slowTime *= multiplier;
+    }
+
+	#endregion
+
+	#region Inputs
+
+	public void Move(InputAction.CallbackContext context)
     {
         if (context.performed)
         {

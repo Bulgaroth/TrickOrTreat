@@ -49,7 +49,7 @@ MonoBehaviour:
   rejectionSamples: 13
   displayRadius: 0.05
   CanContinueSpawn: 1
-  enemyTypes: 0000000001000000
+  enemyTypes: 0000000001000000020000000300000004000000
   SpawnEnemy:
     m_PersistentCalls:
       m_Calls: []

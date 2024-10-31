@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Events;
@@ -20,15 +21,22 @@ public class SpawnManager : MonoBehaviour
 
     public bool CanContinueSpawn;
 
+    private int enemyCount;
 
-    [SerializeField] private const float SPAWN_COOLDOW = 3.0f;
+    [SerializeField] private const float MAX_ENEMY = 50;
+    [SerializeField] private const float SPAWN_COOLDOW = 0.5f;
     [SerializeField] private const float DISTANCE_PLAYER = 10.0f;
     [SerializeField] private const String POOL_TAG = "Enemy_";
+
+    private IEnumerator spawnCoroutine;
     
     public enum EnemyType
     {
         Ghost,
-        Clown
+        Clown,
+        Pumpkin,
+        Skeleton,
+        Vampire
     }
 
     [SerializeField] private List<EnemyType> enemyTypes;
@@ -37,7 +45,10 @@ public class SpawnManager : MonoBehaviour
 
     #region Events
 
+    [HideInInspector] public UnityEvent StartSpawning;
+    [HideInInspector] public UnityEvent StopSpawning;
     [HideInInspector] public UnityEvent SpawnEnemy;
+    [HideInInspector] public UnityEvent EnemyKilled;
 
     #endregion
     
@@ -48,46 +59,14 @@ public class SpawnManager : MonoBehaviour
         Instance = this;
         
         points = PoissonDiscSampling.Get3DPointsFrom2DPointList(radius, new Vector2(regionSize.x, regionSize.z), rejectionSamples);
-    }
 
-    void Start()
-    {
-        StartCoroutine(SpawnCooldownCoroutine());
+        enemyCount = 0;
+        spawnCoroutine = SpawnCooldownCoroutine();
     }
     
     #endregion
 
     #region Methods
-
-    private Vector3 GetValidSpawnPosition()
-    {
-        Vector3 position;
-        int security = 20;
-        
-        do
-        {
-            if (security <= 0) return Vector3.zero;
-            security--;
-            
-            position = points[Random.Range(0, points.Count)];
-
-        } while (Vector3.Distance(position, GameManager.Instance.GetPlayer().transform.position) < DISTANCE_PLAYER);
-
-
-        position = points[Random.Range(0, points.Count)];
-        
-        NavMeshHit hit;
-        if (NavMesh.SamplePosition(position, out hit, 1.0f, NavMesh.AllAreas))
-        {
-            position = hit.position;
-            
-        }
-        
-        
-        
-        
-        return position;
-    }
 
     private bool RandomPosition(out Vector3 result)
     {
@@ -106,9 +85,6 @@ public class SpawnManager : MonoBehaviour
             }
         }
         
-        
-        
-        
         result = Vector3.zero;
         return false;
     }
@@ -119,28 +95,51 @@ public class SpawnManager : MonoBehaviour
 
     private void OnEnable()
     {
+        StartSpawning.AddListener(OnStartSpawning);
+        StopSpawning.AddListener(OnStopSpawning);
         SpawnEnemy.AddListener(OnSpawnEnemy);
+        EnemyKilled.AddListener(OnEnemyKilled);
     }
 
     private void OnDisable()
     {
+        StartSpawning.RemoveListener(OnStartSpawning);
+        StopSpawning.RemoveListener(OnStopSpawning);
         SpawnEnemy.RemoveListener(OnSpawnEnemy);
+        EnemyKilled.RemoveListener(OnEnemyKilled);
     }
 
+    void OnStartSpawning()
+    {
+        StartCoroutine(spawnCoroutine);
+    }
+
+    void OnStopSpawning()
+    {
+        StopCoroutine(spawnCoroutine);
+    }
+    
     void OnSpawnEnemy()
     {
+        Debug.Log($"OnSpawnEnemy > Start Spawn enemy");
+
         var enemy = PoolManager.instance.GetElement(POOL_TAG + enemyTypes[Random.Range(0, enemyTypes.Count)]);
         
-        //Debug.Log("Start Spawn enemy");
-
         if (RandomPosition(out var position))
         {
             Debug.Log("Spawn enemy");
             enemy.transform.position = position;
             enemy.SetActive(true);
         }
+
+        enemyCount++;
     }
 
+    void OnEnemyKilled()
+    {
+        enemyCount--;
+    }
+    
     #endregion
 
 
@@ -165,11 +164,12 @@ public class SpawnManager : MonoBehaviour
 
     IEnumerator SpawnCooldownCoroutine()
     {
-        SpawnEnemy.Invoke();
+        if (enemyCount < MAX_ENEMY)
+            SpawnEnemy.Invoke();
+        
         yield return new WaitForSeconds(SPAWN_COOLDOW);
         
-        if (CanContinueSpawn)
-            StartCoroutine(SpawnCooldownCoroutine());
+        StartCoroutine(SpawnCooldownCoroutine());
     }
 
     #endregion

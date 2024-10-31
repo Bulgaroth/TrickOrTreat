@@ -86,6 +86,8 @@ public class Enemy : MonoBehaviour
         Debug.Log($"{gameObject.name} take damage");
         XPManager.instance.AddXP(data.xpGained);
         Destroy(gameObject);
+
+        SpawnManager.Instance.EnemyKilled.Invoke();
     }
 
     #endregion

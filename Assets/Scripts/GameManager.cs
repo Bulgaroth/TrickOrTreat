@@ -28,6 +28,11 @@ public class GameManager : MonoBehaviour
         player = FindObjectOfType<PlayerController>();
     }
 
+    private void Start()
+    {
+        SpawnManager.StartSpawning.Invoke();
+    }
+
     #endregion
 
     #region Methods

@@ -16,4 +16,14 @@ public class SC_PlayerData : ScriptableObject
 	public float slowTime;
 
 	public float fireRate;
+
+	public void Clear()
+	{
+		playerBaseHP = 10;
+		playerSpeed = 10;
+		addedDamage = 0;
+		healAmount = 5;
+		slowTime = 0;
+		fireRate = 0.5f;
+	}
 }

@@ -181,12 +181,12 @@ public class PlayerController : MonoBehaviour
 		Debug.Log($"Player heal {heal} hp");
 		
 		playerHP += heal;
-		
 		if (playerHP > playerData.playerBaseHP)
 			playerHP = playerData.playerBaseHP;
 
-		characterAudio.PlayOneShot(powerUpSounds[0]);
 		healthBar.SetHealth(playerHP);
+		characterAudio.PlayOneShot(powerUpSounds[0]);
+
 		gunAnimator.SetTrigger("Eat");
 	}
 
@@ -218,6 +218,8 @@ public class PlayerController : MonoBehaviour
 		// TODO Update UI.
 
 		healthBar.SetMaxHealth(playerData.playerBaseHP);
+		playerHP += amount;
+		healthBar.SetHealth(playerData.playerBaseHP);
 
 	}
 	void OnAddDmg(int amount) => playerData.addedDamage += amount;

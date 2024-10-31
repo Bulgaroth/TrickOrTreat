@@ -74,7 +74,7 @@ public class SpawnManager : MonoBehaviour
 			Vector3 randomPoint =  points[Random.Range(0, points.Count)];
 			if (NavMesh.SamplePosition(randomPoint, out var hit, 1.0f, NavMesh.AllAreas))
 			{
-				Debug.Log($"Hit.position:{hit.position}");
+				//Debug.Log($"Hit.position:{hit.position}");
 				if (Vector3.Distance(hit.position, GameManager.Instance.GetPlayer().transform.position) >
 					DISTANCE_PLAYER)
 				{
@@ -120,13 +120,13 @@ public class SpawnManager : MonoBehaviour
 	
 	void OnSpawnEnemy()
 	{
-		Debug.Log($"OnSpawnEnemy > Start Spawn enemy");
+		//Debug.Log($"OnSpawnEnemy > Start Spawn enemy");
 
 		var enemy = PoolManager.instance.GetElement(POOL_TAG + enemyTypes[Random.Range(0, enemyTypes.Count)]).GetComponent<Enemy>();
 		
 		if (RandomPosition(out var position))
 		{
-			Debug.Log("Spawn enemy");
+			//Debug.Log("Spawn enemy");
 			enemy.transform.position = position;
 			enemy.gameObject.SetActive(true);
 		}

@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
 	private SpawnManager SpawnManager;
 
 	[SerializeField] private PlayerController player;
+	[SerializeField] private SC_PlayerData playerData;
 	[SerializeField] private Timer timer;
 	
 	#endregion
@@ -21,11 +22,12 @@ public class GameManager : MonoBehaviour
 
 	private void Awake()
 	{
+
 		Instance = this;
 		
 		PoolManager = PoolManager.instance;
 		SpawnManager = SpawnManager.Instance;
-
+		playerData.Clear();
 		player = FindObjectOfType<PlayerController>();
 	}
 

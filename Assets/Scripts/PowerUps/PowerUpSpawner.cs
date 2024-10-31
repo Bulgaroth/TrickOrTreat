@@ -18,10 +18,9 @@ public class PowerUpSpawner : MonoBehaviour
 
     [SerializeField] private PowerUpType[] powerUpTypes;
 
-    private bool CanSpawn => cooldownOk && !playerInTheWay && currentSpawnedPowerUp == null;
+    private bool CanSpawn => cooldownOk && currentSpawnedPowerUp == null;
 
     private bool cooldownOk = false;
-    private bool playerInTheWay;
 
     private PowerUp currentSpawnedPowerUp;
 
@@ -29,17 +28,8 @@ public class PowerUpSpawner : MonoBehaviour
 
     private void Update()
     {
+        print($"{cooldownOk} && {currentSpawnedPowerUp}");
         if (CanSpawn) Spawn();
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player")) playerInTheWay = true;
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Player")) playerInTheWay = false;
     }
 
     public void Spawn()
@@ -52,7 +42,10 @@ public class PowerUpSpawner : MonoBehaviour
 
         cooldownOk = false;
         StartCoroutine(SpawnTimer());
+		currentSpawnedPowerUp.spawner = this;
     }
+
+    public void PowerUpUsed() => currentSpawnedPowerUp = null;
 
     IEnumerator SpawnTimer()
     {

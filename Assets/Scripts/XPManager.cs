@@ -13,9 +13,12 @@ public class XPManager : MonoBehaviour
 	[SerializeField] private GameObject[] choicePrefabs;
 
 	[SerializeField] private PlayerController playerController;
+	[SerializeField] private GameManager gameManager;
 
 	private int currentXP;
 	private int nextLvlXP = 2;
+
+	private GameObject[] currentChoices = new GameObject[3];
 
 	#region Singleton
 
@@ -61,12 +64,12 @@ public class XPManager : MonoBehaviour
 			GameObject obj = Instantiate(prefabStack[prefabIndex], slotParents[i]);
 			obj.GetComponent<ChoiceButton>().OnChose += UpdatePlayerData;
 			prefabStack.RemoveAt(prefabIndex);
+			currentChoices[i] = obj;
 		}
 
 		choiceMenu.SetActive(true);
 		playerController.ToggleCamera(false);
-		// TODO pause.
-		// TODO Lock camera & free cursor.
+		gameManager.Pause();
 	}
 
 	private void UpdatePlayerData(ChoiceButton.ChoiceType type, float value)
@@ -85,9 +88,9 @@ public class XPManager : MonoBehaviour
 
 	private void HideNextLvlChoices()
 	{
-		// TODO unpause
-		// TODO Free camera & lock cursor.
+		foreach(var obj in currentChoices) Destroy(obj);
 		choiceMenu.SetActive(false);
 		playerController.ToggleCamera(true);
+		gameManager.Play();
 	}
 }

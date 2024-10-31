@@ -12,6 +12,11 @@ public class PlayerController : MonoBehaviour
 	[SerializeField] private SC_PlayerData playerData;
 	[SerializeField] private LayerMask groundLayers;
 	[SerializeField] private HeadBobbing headBobbing;
+	[SerializeField] private AudioSource characterAudio;
+	[SerializeField] private AudioSource gunAudio;
+	[SerializeField] private AudioClip[] powerUpSounds;
+	[SerializeField] private AudioClip[] commentSounds;
+	[SerializeField] private AudioClip[] gunSounds;
 
 	[SerializeField] private int playerHP;
 	
@@ -95,7 +100,6 @@ public class PlayerController : MonoBehaviour
 		mainCamera.transform.localRotation = Quaternion.Euler(verticaRotation, 0, 0);
 	}
 
-
 	void Shoot()
 	{
 		// Instantiate the projectile at the position and rotation of this transform
@@ -105,6 +109,9 @@ public class PlayerController : MonoBehaviour
 		// Give the cloned object an initial velocity along the current
 		// object's Z axis
 		clone.velocity = mainCamera.transform.forward * bulletPower;
+
+		gunAudio.pitch = Random.Range(0.9f, 1.1f);
+		gunAudio.PlayOneShot(gunSounds[0]);
 	}
 
 	void CheckGroundType()

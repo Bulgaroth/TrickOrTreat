@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,6 +11,8 @@ public class GameManager : MonoBehaviour
     
     private PoolManager PoolManager;
     private SpawnManager SpawnManager;
+
+    [SerializeField] private PlayerController player;
     
     #endregion
     
@@ -21,6 +24,17 @@ public class GameManager : MonoBehaviour
         
         PoolManager = PoolManager.instance;
         SpawnManager = SpawnManager.Instance;
+
+        player = FindObjectOfType<PlayerController>();
+    }
+
+    #endregion
+
+    #region Methods
+
+    public PlayerController GetPlayer()
+    {
+        return player;
     }
 
     #endregion

@@ -1,5 +1,133 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &843664464532617911
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7449229687267540178}
+  - component: {fileID: 7932632101523423785}
+  m_Layer: 0
+  m_Name: FootstepsAudio
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7449229687267540178
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 843664464532617911}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 521669831578341263}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &7932632101523423785
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 843664464532617911}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &4669850667280128132
 GameObject:
   m_ObjectHideFlags: 0
@@ -36,6 +164,7 @@ Transform:
   m_Children:
   - {fileID: 3160005931238491796}
   - {fileID: 7236965033279083938}
+  - {fileID: 7449229687267540178}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!143 &2025234393709606540
@@ -100,9 +229,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerData: {fileID: 11400000, guid: af17d356061d4bd42a71e4690bc2caa1, type: 2}
+  groundLayers:
+    serializedVersion: 2
+    m_Bits: 8
+  headBobbing: {fileID: 12126312372480059}
   playerHP: 0
   cameraRange: {x: -45, y: 45}
   gravity: 500
+  healthBar: {fileID: 0}
   bulletList:
   - {fileID: 3002781300646643753, guid: 2d4fcfc8b20917748889fc1e89fcacb8, type: 3}
   - {fileID: 479073100877170627, guid: 9fcfdd3996fa29d4ebabcc12fe26ac01, type: 3}
@@ -115,6 +249,21 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   Die:
+    m_PersistentCalls:
+      m_Calls: []
+  AddMaxLife:
+    m_PersistentCalls:
+      m_Calls: []
+  AddSpeed:
+    m_PersistentCalls:
+      m_Calls: []
+  AddDmg:
+    m_PersistentCalls:
+      m_Calls: []
+  AddFireRate:
+    m_PersistentCalls:
+      m_Calls: []
+  AddPowerUpEfficiency:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &12126312372480059
@@ -130,8 +279,44 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _isEnable: 1
+  alreadyStepped: 0
   _data: {fileID: 11400000, guid: 8f30b2c6577b08e46a972cbe03bf55d6, type: 2}
+  footStepsAudio: {fileID: 7932632101523423785}
+  footstepsSounds:
+  - tag: Concrete
+    footsteps:
+    - {fileID: 8300000, guid: 649a6792f2a1d3041b09698dddae4559, type: 3}
+    - {fileID: 8300000, guid: c5208926dc493554cb3046dabae370bd, type: 3}
+    - {fileID: 8300000, guid: e3c21d76410c1e949bfd005a91c6d24e, type: 3}
+    - {fileID: 8300000, guid: 9c6222f180c5c6347a4600633a7b8795, type: 3}
+    - {fileID: 8300000, guid: 83efeabf17665904e8e72bd166202853, type: 3}
+    - {fileID: 8300000, guid: e3f893509ec3afb41b7d033854004214, type: 3}
+  - tag: Grass
+    footsteps:
+    - {fileID: 8300000, guid: 1dc5608df65027c48ae6ce74b61917a5, type: 3}
+    - {fileID: 8300000, guid: 50eae29d518c26c44bc5944a4bf76809, type: 3}
+    - {fileID: 8300000, guid: 047fc3ba6ce66b146afa13d878a26109, type: 3}
+    - {fileID: 8300000, guid: 4e97c11053993414693f1c18a0344bc3, type: 3}
+    - {fileID: 8300000, guid: 3ef8a8c100a637744870df73c22407c3, type: 3}
+    - {fileID: 8300000, guid: 458ffdc29301a384a83ac0410f5c595c, type: 3}
+  - tag: Tiles
+    footsteps:
+    - {fileID: 8300000, guid: ed1d72cc564e0af4f9b33930aad2b70e, type: 3}
+    - {fileID: 8300000, guid: faf1758438abd6640b63e94fc784bd1a, type: 3}
+    - {fileID: 8300000, guid: 11feb37faf2f25648942d146a7677540, type: 3}
+    - {fileID: 8300000, guid: 299e82f06110dc34aaee4773e79267d5, type: 3}
+    - {fileID: 8300000, guid: 5868378cf58462847b30035d90c19195, type: 3}
+    - {fileID: 8300000, guid: 45da6b6a1388aba49872e3751351e2f1, type: 3}
+  - tag: Car
+    footsteps:
+    - {fileID: 8300000, guid: 0455ab51da751d04c9363eaf2478e106, type: 3}
+    - {fileID: 8300000, guid: 1d75a883cd632f94ca4e0dc5c3fcb928, type: 3}
+    - {fileID: 8300000, guid: 6d4d7a8ec46610045a99f9329e25963a, type: 3}
+    - {fileID: 8300000, guid: eead8d810c7c9b742abd6ee30d94180d, type: 3}
+    - {fileID: 8300000, guid: d10a373baae0b1942a6fb07429d0a65c, type: 3}
+    - {fileID: 8300000, guid: 6c48830196b24a14cb1582083f6849ba, type: 3}
   _cameraHolder: {fileID: 3160005931238491796}
+  groundType: 0
 --- !u!114 &3312427883707878006
 MonoBehaviour:
   m_ObjectHideFlags: 0

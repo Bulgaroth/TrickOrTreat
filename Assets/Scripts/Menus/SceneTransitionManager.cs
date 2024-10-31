@@ -11,6 +11,8 @@ public class SceneTransitionManager : MonoBehaviour
 
     [SerializeField] private float transitionTime = 1.5f;
     [SerializeField] private Animator animator;
+    [SerializeField] private AudioSource source;
+    [SerializeField] private AudioClip startSound, endSound;
 
     private bool _isTransitioning;
 
@@ -34,6 +36,8 @@ public class SceneTransitionManager : MonoBehaviour
         Time.timeScale = 1;
 
         animator.SetTrigger(Start);
+        source.clip = startSound;
+        source.Play();
 
         yield return new WaitForSeconds(transitionTime);
 
@@ -44,6 +48,8 @@ public class SceneTransitionManager : MonoBehaviour
         yield return new WaitForEndOfFrame();
 
         animator.SetTrigger(End);
+        source.clip = endSound;
+        source.Play();
         _isTransitioning = false;
     }
 
@@ -54,6 +60,8 @@ public class SceneTransitionManager : MonoBehaviour
         Time.timeScale = 1;
 
         animator.SetTrigger(Start);
+        source.clip = startSound;
+        source.Play();
 
         yield return new WaitForSeconds(transitionTime);
 
@@ -66,6 +74,8 @@ public class SceneTransitionManager : MonoBehaviour
         yield return new WaitForEndOfFrame();
 
         animator.SetTrigger(End);
+        source.clip = endSound;
+        source.Play();
         _isTransitioning = false;
     }
 

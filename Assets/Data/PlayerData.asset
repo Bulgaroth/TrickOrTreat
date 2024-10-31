@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86b6dd0b3c74c03418647039709cc0cd, type: 3}
   m_Name: PlayerData
   m_EditorClassIdentifier: 
-  playerBaseHP: 25
+  playerBaseHP: 10
   playerSpeed: 10
-  addedDamage: 3
+  addedDamage: 0
   healAmount: 5
   slowTime: 2
-  fireRate: 0.40499997
+  fireRate: 0.5

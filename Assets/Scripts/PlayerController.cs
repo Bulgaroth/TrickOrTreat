@@ -64,6 +64,8 @@ public class PlayerController : MonoBehaviour
 		mainCamera = Camera.main;
 		_controller = GetComponent<CharacterController>();
 		playerHP = playerData.playerBaseHP;
+		healthBar.SetMaxHealth(playerData.playerBaseHP);
+		healthBar.SetHealth(playerData.playerBaseHP);
 	}
 
 	void Update()

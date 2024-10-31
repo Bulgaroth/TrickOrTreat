@@ -3951,7 +3951,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8870592997393477982, guid: 4bdd0408658822b438c98dae294ff999, type: 3}
       propertyPath: powerUpTypes.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8870592997393477982, guid: 4bdd0408658822b438c98dae294ff999, type: 3}
       propertyPath: powerUpTypes.Array.data[1]
@@ -4466,9 +4466,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 843664464532617911, guid: 5f1f59f6dc0a17d4eac5049da5832e4c, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1355520456101948739, guid: 5f1f59f6dc0a17d4eac5049da5832e4c, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 1356175343536146839, guid: 5f1f59f6dc0a17d4eac5049da5832e4c, type: 3}
       propertyPath: m_RaycastTarget
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1639587415066765992, guid: 5f1f59f6dc0a17d4eac5049da5832e4c, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1871078063798922211, guid: 5f1f59f6dc0a17d4eac5049da5832e4c, type: 3}
       propertyPath: m_RaycastTarget
@@ -4478,17 +4490,53 @@ PrefabInstance:
       propertyPath: m_RaycastTarget
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2773147851125161878, guid: 5f1f59f6dc0a17d4eac5049da5832e4c, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2913610750931877563, guid: 5f1f59f6dc0a17d4eac5049da5832e4c, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 3126480198179843307, guid: 5f1f59f6dc0a17d4eac5049da5832e4c, type: 3}
       propertyPath: m_RaycastTarget
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3300492571696033756, guid: 5f1f59f6dc0a17d4eac5049da5832e4c, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3552072117799966573, guid: 5f1f59f6dc0a17d4eac5049da5832e4c, type: 3}
       propertyPath: m_RaycastTarget
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3757915911335326126, guid: 5f1f59f6dc0a17d4eac5049da5832e4c, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4123804863493773675, guid: 5f1f59f6dc0a17d4eac5049da5832e4c, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4422345112231674460, guid: 5f1f59f6dc0a17d4eac5049da5832e4c, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 4669850667280128132, guid: 5f1f59f6dc0a17d4eac5049da5832e4c, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 4669850667280128132, guid: 5f1f59f6dc0a17d4eac5049da5832e4c, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4873195571904356555, guid: 5f1f59f6dc0a17d4eac5049da5832e4c, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4934288180545581674, guid: 5f1f59f6dc0a17d4eac5049da5832e4c, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5495993456081130131, guid: 5f1f59f6dc0a17d4eac5049da5832e4c, type: 3}
       propertyPath: m_RaycastTarget
@@ -4498,14 +4546,54 @@ PrefabInstance:
       propertyPath: m_RaycastTarget
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6094384465207581112, guid: 5f1f59f6dc0a17d4eac5049da5832e4c, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6543384318883637676, guid: 5f1f59f6dc0a17d4eac5049da5832e4c, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6808352584061176772, guid: 5f1f59f6dc0a17d4eac5049da5832e4c, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 7210511753564281167, guid: 5f1f59f6dc0a17d4eac5049da5832e4c, type: 3}
       propertyPath: m_RaycastTarget
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7417161674906625929, guid: 5f1f59f6dc0a17d4eac5049da5832e4c, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7618046729819356945, guid: 5f1f59f6dc0a17d4eac5049da5832e4c, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7754485587678795024, guid: 5f1f59f6dc0a17d4eac5049da5832e4c, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7879890475626580044, guid: 5f1f59f6dc0a17d4eac5049da5832e4c, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7988172429298900262, guid: 5f1f59f6dc0a17d4eac5049da5832e4c, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 8165360333709108678, guid: 5f1f59f6dc0a17d4eac5049da5832e4c, type: 3}
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 1309141073}
+    - target: {fileID: 8898287620422111548, guid: 5f1f59f6dc0a17d4eac5049da5832e4c, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 9013539841327277978, guid: 5f1f59f6dc0a17d4eac5049da5832e4c, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 7902897922864715954, guid: 5f1f59f6dc0a17d4eac5049da5832e4c, type: 3}
     m_RemovedGameObjects: []
@@ -41189,7 +41277,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8870592997393477982, guid: 4bdd0408658822b438c98dae294ff999, type: 3}
       propertyPath: powerUpTypes.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8870592997393477982, guid: 4bdd0408658822b438c98dae294ff999, type: 3}
       propertyPath: powerUpTypes.Array.data[1]
@@ -48561,7 +48649,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8870592997393477982, guid: 4bdd0408658822b438c98dae294ff999, type: 3}
       propertyPath: powerUpTypes.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8870592997393477982, guid: 4bdd0408658822b438c98dae294ff999, type: 3}
       propertyPath: powerUpTypes.Array.data[1]
@@ -52030,6 +52118,10 @@ PrefabInstance:
     - target: {fileID: 8803588101960473993, guid: 4bdd0408658822b438c98dae294ff999, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8870592997393477982, guid: 4bdd0408658822b438c98dae294ff999, type: 3}
+      propertyPath: powerUpTypes.Array.size
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -59559,7 +59651,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8870592997393477982, guid: 4bdd0408658822b438c98dae294ff999, type: 3}
       propertyPath: powerUpTypes.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8870592997393477982, guid: 4bdd0408658822b438c98dae294ff999, type: 3}
       propertyPath: powerUpTypes.Array.data[1]
@@ -71068,7 +71160,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8870592997393477982, guid: 4bdd0408658822b438c98dae294ff999, type: 3}
       propertyPath: powerUpTypes.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8870592997393477982, guid: 4bdd0408658822b438c98dae294ff999, type: 3}
       propertyPath: powerUpTypes.Array.data[1]

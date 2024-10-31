@@ -4171,7 +4171,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: f662f8dc0a695d448904a6014e0c30a7, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.3
+  m_Volume: 0.25
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -32242,11 +32242,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxVolumes:
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
+  - 0.8
+  - 0.33
+  - 0.3
+  - 0.35
+  - 0.5
   fadeRate: 1
 --- !u!4 &1159138233
 Transform:

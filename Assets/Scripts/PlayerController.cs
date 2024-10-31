@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
 	[SerializeField] private AudioClip[] commentSounds;
 	[SerializeField] private AudioClip[] gunSounds;
 	[SerializeField] private Animator gunAnimator;
+	[SerializeField] private Vector2 sensitivity;
 
 	bool canShoot = true;
 	[SerializeField] private int playerHP;
@@ -101,11 +102,11 @@ public class PlayerController : MonoBehaviour
 
 	void RotateCamera()
 	{
-		transform.Rotate(0, mouseRotation.x,0);
+		transform.Rotate(0, mouseRotation.x * sensitivity.y,0);
 		
 		verticaRotation -= mouseRotation.y;
 		verticaRotation = Mathf.Clamp(verticaRotation, cameraRange.x, cameraRange.y);
-		mainCamera.transform.localRotation = Quaternion.Euler(verticaRotation, 0, 0);
+		mainCamera.transform.localRotation = Quaternion.Euler(verticaRotation * sensitivity.x, 0, 0);
 	}
 
 	void Shoot()

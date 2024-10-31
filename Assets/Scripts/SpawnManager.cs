@@ -22,11 +22,12 @@ public class SpawnManager : MonoBehaviour
 
 	public bool CanContinueSpawn;
 	private List<Enemy> spawnedEnemies = new();
+	[SerializeField] private PoolManager poolManager;
 
 	[SerializeField] private const float MAX_ENEMY = 50;
 	[SerializeField] private const float SPAWN_COOLDOW = 0.5f;
 	[SerializeField] private const float DISTANCE_PLAYER = 10.0f;
-	[SerializeField] private const String POOL_TAG = "Enemy_";
+	[SerializeField] private const string POOL_TAG = "Enemy_";
 
 	private IEnumerator spawnCoroutine;
 	
@@ -60,9 +61,8 @@ public class SpawnManager : MonoBehaviour
 		
 		points = PoissonDiscSampling.Get3DPointsFrom2DPointList(radius, new Vector2(regionSize.x, regionSize.z), rejectionSamples);
 
-		spawnCoroutine = SpawnCooldownCoroutine();
 	}
-	
+
 	#endregion
 
 	#region Methods
@@ -110,6 +110,7 @@ public class SpawnManager : MonoBehaviour
 
 	void OnStartSpawning()
 	{
+		spawnCoroutine = SpawnCooldownCoroutine();
 		StartCoroutine(spawnCoroutine);
 	}
 
@@ -122,7 +123,7 @@ public class SpawnManager : MonoBehaviour
 	{
 		//Debug.Log($"OnSpawnEnemy > Start Spawn enemy");
 
-		var enemy = PoolManager.instance.GetElement(POOL_TAG + enemyTypes[Random.Range(0, enemyTypes.Count)]).GetComponent<Enemy>();
+		var enemy = /*PoolManager.instance.*/poolManager.GetElement(POOL_TAG + enemyTypes[Random.Range(0, enemyTypes.Count)].ToString()).GetComponent<Enemy>();
 		
 		if (RandomPosition(out var position))
 		{

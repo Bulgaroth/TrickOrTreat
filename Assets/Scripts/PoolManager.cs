@@ -12,27 +12,29 @@ public class PoolManager : MonoBehaviour
 		public int size;
 	}
 
-	public List<Pool> pools = new();
+	public List<Pool> pools;
 	public Dictionary<string, Queue<GameObject>> poolDictionnary = new();
 
     #region Singleton
 
 	public static PoolManager instance;
-    private void Awake() => instance = this;
-    #endregion
 
-    private void Start()
+	#endregion
+
+    private void Awake()
 	{
+		instance = this;
+
 		foreach (var pool in pools)
 		{
 			var objectPool = new Queue<GameObject>();
+			
 			for (int i = 0; i < pool.size; ++i)
 			{
 				var obj = Instantiate(pool.prefab, transform);
 				objectPool.Enqueue(obj);
 				obj.SetActive(false);
 			}
-
 			poolDictionnary.Add(pool.tag, objectPool);
 		}
 	}

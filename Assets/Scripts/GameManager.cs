@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
 	[SerializeField] private GameObject deathMenu;
 
 	private PoolManager PoolManager;
-	private SpawnManager SpawnManager;
+	[SerializeField] private SpawnManager SpawnManager;
 
 	[SerializeField] private PlayerController player;
 	[SerializeField] private SC_PlayerData playerData;
@@ -24,11 +24,10 @@ public class GameManager : MonoBehaviour
 
 	private void Awake()
 	{
-
 		Instance = this;
-		
+		Cursor.visible = false;
 		PoolManager = PoolManager.instance;
-		SpawnManager = SpawnManager.Instance;
+		//SpawnManager = SpawnManager.Instance;
 		playerData.Clear();
 		player = FindObjectOfType<PlayerController>();
 	}
@@ -36,9 +35,7 @@ public class GameManager : MonoBehaviour
 	private void Start()
 	{
 		SpawnManager.StartSpawning.Invoke();
-
 		deathMenu.SetActive(false);
-
 	}
 
 	#endregion
@@ -69,6 +66,7 @@ public class GameManager : MonoBehaviour
     {
 		//TODO
 		deathMenu.SetActive(true);
+		Pause();
     }
 
 

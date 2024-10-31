@@ -4586,6 +4586,14 @@ PrefabInstance:
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 1309141073}
+    - target: {fileID: 8165360333709108678, guid: 5f1f59f6dc0a17d4eac5049da5832e4c, type: 3}
+      propertyPath: sensitivity.x
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8165360333709108678, guid: 5f1f59f6dc0a17d4eac5049da5832e4c, type: 3}
+      propertyPath: sensitivity.y
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 8898287620422111548, guid: 5f1f59f6dc0a17d4eac5049da5832e4c, type: 3}
       propertyPath: m_Layer
       value: 8
@@ -5383,6 +5391,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6797878179346733245, guid: 3ffe499a6086a3149a693fe16cb3fb18, type: 3}
+      propertyPath: poolManager
+      value: 
+      objectReference: {fileID: 1731515872}
     - target: {fileID: 7015951817935109188, guid: 3ffe499a6086a3149a693fe16cb3fb18, type: 3}
       propertyPath: m_Name
       value: SpawnManager
@@ -48577,7 +48589,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathMenu: {fileID: 2025992238}
+  SpawnManager: {fileID: 1953952572}
   player: {fileID: 2078565824}
+  playerData: {fileID: 11400000, guid: af17d356061d4bd42a71e4690bc2caa1, type: 2}
   timer: {fileID: 2128629934}
 --- !u!4 &1546656004
 Transform:
@@ -51334,6 +51348,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 441386, guid: ab5e0beb1c36778479983f28b65d97dd, type: 3}
   m_PrefabInstance: {fileID: 1728623560}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1731515872 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1583510135887295875, guid: f6a46fe79b8c4f14cac0b82e1f3ddd62, type: 3}
+  m_PrefabInstance: {fileID: 2125805240}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af4f31824e3418a44ac9b0cccdd1d9df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1731681952 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6314473912039760033, guid: c15d410319a3fc449a637a9f52b8bc82, type: 3}
@@ -59466,6 +59491,17 @@ MonoBehaviour:
   m_IgnoreFromBuild: 0
   m_ApplyToChildren: 1
   m_AffectedAgents: ffffffff
+--- !u!114 &1953952572 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6797878179346733245, guid: 3ffe499a6086a3149a693fe16cb3fb18, type: 3}
+  m_PrefabInstance: {fileID: 369669577}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 535f1acf1ada1294790c3832adc5b357, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1954922290
 PrefabInstance:
   m_ObjectHideFlags: 0

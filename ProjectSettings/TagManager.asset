@@ -5,11 +5,15 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemy
+  - Ground_Grass
+  - Ground_Tile
+  - Ground_Concrete
+  - Ground_Car
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Ground
   - Water
   - UI
   - 

@@ -501,7 +501,7 @@ GameObject:
   - component: {fileID: 7846919525775462537}
   - component: {fileID: 7902897922864715954}
   m_Layer: 5
-  m_Name: GunCanvas
+  m_Name: PlayerCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -548,7 +548,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_TargetDisplay: 0
 --- !u!114 &7846919525775462537
 MonoBehaviour:

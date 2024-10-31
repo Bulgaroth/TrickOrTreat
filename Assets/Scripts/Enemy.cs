@@ -18,6 +18,7 @@ public class Enemy : MonoBehaviour
 	[SerializeField] private AudioClip[] hitSounds;
 	[SerializeField] private AudioClip[] monsterSounds;
 	[SerializeField] private GameObject visuals;
+	[SerializeField] private GameObject deathParticles;
 
 	private bool dead;
 	
@@ -100,6 +101,7 @@ public class Enemy : MonoBehaviour
 
 	void OnDie()
 	{
+		Instantiate(deathParticles, transform.position, Quaternion.identity);
 		XPManager.instance.AddXP(data.xpGained);
 		visuals.SetActive(false);
 		dead = true;

@@ -1,0 +1,68 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5198893483075152000
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 943557344847347499}
+  - component: {fileID: 1583510135887295875}
+  m_Layer: 0
+  m_Name: PoolManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &943557344847347499
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5198893483075152000}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1583510135887295875
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5198893483075152000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af4f31824e3418a44ac9b0cccdd1d9df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pools:
+  - tag: PowerUp_Coffee
+    prefab: {fileID: 6891759861964936135, guid: c72d74925dec72c408d58dbda3c5d1de, type: 3}
+    size: 6
+  - tag: PowerUp_Health
+    prefab: {fileID: 6176920492788897545, guid: 512ade3d44082c64e94d5a724e834ef3, type: 3}
+    size: 6
+  - tag: Enemy_Ghost
+    prefab: {fileID: 3959334820020451919, guid: 19dbe738c7b158047936130a27211c97, type: 3}
+    size: 50
+  - tag: Enemy_Clown
+    prefab: {fileID: 3959334820020451919, guid: 1b7ae1985c720ef4f8293e608eb7985e, type: 3}
+    size: 50
+  - tag: Enemy_Pumpkin
+    prefab: {fileID: 3959334820020451919, guid: 5df9083ad417bb24f8f07f2fbed63f11, type: 3}
+    size: 50
+  - tag: Enemy_Skeleton
+    prefab: {fileID: 3959334820020451919, guid: 01ee114b3e5cd9243be77248606ccaec, type: 3}
+    size: 50
+  - tag: Enemy_Vampire
+    prefab: {fileID: 3959334820020451919, guid: ec527164c9194d54a942e36de2cc7c57, type: 3}
+    size: 50

@@ -1,33 +1,47 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-	public static GameManager Instance;
+    public static GameManager Instance;
 
-	#region Attributes
-	
-	private PoolManager PoolManager;
-	private SpawnManager SpawnManager;
-	
-	#endregion
-	
-	#region Unity API
+    #region Attributes
+    
+    private PoolManager PoolManager;
+    private SpawnManager SpawnManager;
 
-	private void Awake()
-	{
-		Instance = this;
-		
-		PoolManager = PoolManager.instance;
-		SpawnManager = SpawnManager.Instance;
-	}
+    [SerializeField] private PlayerController player;
+    
+    #endregion
+    
+    #region Unity API
 
-	#endregion
+    private void Awake()
+    {
+        Instance = this;
+        
+        PoolManager = PoolManager.instance;
+        SpawnManager = SpawnManager.Instance;
 
-	private void Pause()
-	{
+        player = FindObjectOfType<PlayerController>();
+    }
 
-	}
-	
+    private void Start()
+    {
+        SpawnManager.StartSpawning.Invoke();
+    }
+
+    #endregion
+
+    #region Methods
+
+    public PlayerController GetPlayer()
+    {
+        return player;
+    }
+
+    #endregion
+    
 }

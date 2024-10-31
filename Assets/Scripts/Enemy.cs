@@ -106,6 +106,8 @@ public class Enemy : MonoBehaviour
 		visuals.SetActive(false);
 		dead = true;
 		agent.enabled = false;
+		
+		SpawnManager.Instance.EnemyKilled.Invoke();
 	}
 
 	void PlayHitSound(bool headshot)

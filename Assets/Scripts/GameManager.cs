@@ -8,7 +8,9 @@ public class GameManager : MonoBehaviour
 	public static GameManager Instance;
 
 	#region Attributes
-	
+
+	[SerializeField] private GameObject deathMenu;
+
 	private PoolManager PoolManager;
 	private SpawnManager SpawnManager;
 
@@ -34,6 +36,9 @@ public class GameManager : MonoBehaviour
 	private void Start()
 	{
 		SpawnManager.StartSpawning.Invoke();
+
+		deathMenu.SetActive(false);
+
 	}
 
 	#endregion
@@ -59,6 +64,29 @@ public class GameManager : MonoBehaviour
 		timer.paused = false;
 	}
 
-	#endregion
 
+	void OnPlayerDie()
+    {
+		//TODO
+		deathMenu.SetActive(true);
+    }
+
+
+    #endregion
+
+    #region Event Handlers
+
+    private void OnEnable()
+    {
+		player = FindObjectOfType<PlayerController>();
+
+		player.Die.AddListener(OnPlayerDie);
+    }
+
+    private void OnDisable()
+    {
+		player.Die.RemoveListener(OnPlayerDie);
+    }
+
+    #endregion
 }

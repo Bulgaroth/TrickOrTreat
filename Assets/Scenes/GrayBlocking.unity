@@ -4387,6 +4387,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 5991245017579254236, guid: 5f1f59f6dc0a17d4eac5049da5832e4c, type: 3}
+      propertyPath: m_Volume
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5991245017579254236, guid: 5f1f59f6dc0a17d4eac5049da5832e4c, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8165360333709108678, guid: 5f1f59f6dc0a17d4eac5049da5832e4c, type: 3}
       propertyPath: healthBar
       value: 
@@ -50430,7 +50438,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6dbd9908bf812524eb17c57da467899b, type: 2}
+  - {fileID: 2100000, guid: cd009981c30ee084eb4e0f5c7f49c51c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -67479,7 +67487,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6dbd9908bf812524eb17c57da467899b, type: 2}
+  - {fileID: 2100000, guid: cd009981c30ee084eb4e0f5c7f49c51c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

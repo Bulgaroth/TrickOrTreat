@@ -406,8 +406,8 @@ MonoBehaviour:
   transitionTime: 1
   animator: {fileID: 3515368243527119182}
   source: {fileID: 4922131498148684602}
-  startSound: {fileID: 8300000, guid: 4896b50e3cd75a247a8ad08fcfd4809c, type: 3}
-  endSound: {fileID: 0}
+  startSound: {fileID: 8300000, guid: a56d9250e73b5df488058bd24b0e249e, type: 3}
+  endSound: {fileID: 8300000, guid: 7018a4da3c662d347b10a57057423163, type: 3}
 --- !u!82 &4922131498148684602
 AudioSource:
   m_ObjectHideFlags: 0
@@ -420,7 +420,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.8
   m_Pitch: 1
   Loop: 0
   Mute: 0

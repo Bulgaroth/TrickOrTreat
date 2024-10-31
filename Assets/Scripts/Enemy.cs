@@ -1,92 +1,132 @@
+using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Events;
 
 public class Enemy : MonoBehaviour
 {
-    #region Attributes
+	#region Attributes
 
-    [SerializeField] private SC_EnemyData data;
-    [SerializeField] private int _currentHP;
-    
-    private NavMeshAgent agent;
-    private PlayerController player;
-    private SpriteRenderer spriteRend;
+	private float sound_cooldown;
+	private bool monsterSoundReady = true;
 
-    #endregion
+	[SerializeField] private SC_EnemyData data;
+	[SerializeField] private int _currentHP;
+	[SerializeField] private AudioSource aS;
+	[SerializeField] private AudioClip[] headshotSounds;
+	[SerializeField] private AudioClip[] hitSounds;
+	[SerializeField] private AudioClip[] monsterSounds;
+	[SerializeField] private GameObject visuals;
 
-    #region Events
+	private bool dead;
+	
+	private NavMeshAgent agent;
+	private PlayerController player;
 
-    public UnityEvent<int> TakeDamage;
-    public UnityEvent Die;
+	#endregion
 
-    #endregion
-    
-    #region Unity API
-    void Awake()
-    {
-        agent = GetComponent<NavMeshAgent>();
-        _currentHP = data.health;
-        spriteRend = GetComponentInChildren<SpriteRenderer>();
-        spriteRend.sprite = data.sprite;
-    }
+	#region Events
 
-    void Start()
-    {
-        player = FindObjectOfType<PlayerController>();
-    }
+	public UnityEvent<int,bool> TakeDamage;
+	public UnityEvent Die;
 
-    void Update()
-    {
-        //transform.LookAt(player.transform, Vector3.up);
-        
-        Vector3 targetPostition = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z );
-        transform.LookAt(targetPostition);
-        
-        agent.SetDestination(player.transform.position);
-    }
+	#endregion
+	
+	#region Unity API
+	void Awake()
+	{
+		agent = GetComponent<NavMeshAgent>();
+		_currentHP = data.health;
+	}
 
-    #endregion
+	void Start()
+	{
+		player = FindObjectOfType<PlayerController>();
+	}
 
-    #region Event Handlers
+	void Update()
+	{
+		if (dead) return;
 
-    private void OnEnable()
-    {
-        TakeDamage.AddListener(OnTakeDamage);
-        Die.AddListener(OnDie);
-    }
+		if (monsterSoundReady) PlayMonsterSound();
+		//transform.LookAt(player.transform, Vector3.up);
+		
+		Vector3 targetPostition = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z );
+		transform.LookAt(targetPostition);
+		
+		agent.SetDestination(player.transform.position);
+	}
+
+	#endregion
+
+	#region Event Handlers
+
+	private void OnEnable()
+	{
+		sound_cooldown = Random.Range(1.5f, 3f);
+		TakeDamage.AddListener(OnTakeDamage);
+		Die.AddListener(OnDie);
+		visuals.SetActive(true);
+		dead = false;
+		agent.enabled = true;
+	}
 
 
-    private void OnDisable()
-    {
-        TakeDamage.RemoveListener(OnTakeDamage);
-        Die.RemoveListener(OnDie);
-    }
-    
-    private void OnTriggerEnter(Collider other)
-    {
-        if (!other.transform.CompareTag("Player")) return;
-    
-        other.GetComponent<PlayerController>().TakeDamage.Invoke(data.damage);
-        
+	private void OnDisable()
+	{
+		TakeDamage.RemoveListener(OnTakeDamage);
+		Die.RemoveListener(OnDie);
+	}
+	
+	private void OnTriggerEnter(Collider other)
+	{
+		if(dead) return;
+		if (!other.transform.CompareTag("Player")) return;
+	
+		other.GetComponent<PlayerController>().TakeDamage.Invoke(data.damage);
+	}
+	
+	void OnTakeDamage(int damage, bool headshot)
+	{
+		_currentHP -= damage;
 
-    }
-    
-    void OnTakeDamage(int damage)
-    {
-        Debug.Log($"{gameObject.name} take {damage} damage");
-        _currentHP -= damage;
-        
-        if (_currentHP <= 0)
-            Die.Invoke();
-    }
+		PlayHitSound(headshot);
+		
+		if (_currentHP <= 0 || headshot)
+			Die.Invoke();
+		
+	}
 
-    void OnDie()
-    {
-        Debug.Log($"{gameObject.name} take damage");
-        XPManager.instance.AddXP(data.xpGained);
-        Destroy(gameObject);
-    }
+	void OnDie()
+	{
+		XPManager.instance.AddXP(data.xpGained);
+		visuals.SetActive(false);
+		dead = true;
+		agent.enabled = false;
+	}
 
-    #endregion
+	void PlayHitSound(bool headshot)
+	{
+		if(headshot) print(name + " hit in the head");
+		else print(name + " hit");
+		var sounds = headshot ? headshotSounds : hitSounds;
+		aS.PlayOneShot(sounds[Random.Range(0, sounds.Length)]);
+	}
+
+	void PlayMonsterSound()
+	{
+		monsterSoundReady = false;
+		aS.PlayOneShot(monsterSounds[Random.Range(0, monsterSounds.Length)]);
+		sound_cooldown = Random.Range(1.5f, 3f);
+		StartCoroutine(MonsterSoundCooldown());
+	}
+
+	IEnumerator MonsterSoundCooldown()
+	{
+		yield return new WaitForSeconds(sound_cooldown);
+		monsterSoundReady = true;
+	}
+
+	#endregion
 }

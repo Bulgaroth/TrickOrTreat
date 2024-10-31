@@ -119,7 +119,6 @@ public class HeadBobbing : MonoBehaviour
 		alreadyStepped = true;
 		StartCoroutine(FootStepCooldown());
 
-		print(groundType);
 		var footstepArray = footstepsSounds[(int)groundType];
 		footStepsAudio.PlayOneShot(footstepArray.footsteps[Random.Range(0, footstepArray.footsteps.Count)]);
 	}

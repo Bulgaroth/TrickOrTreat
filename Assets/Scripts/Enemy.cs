@@ -6,13 +6,12 @@ public class Enemy : MonoBehaviour
 {
     #region Attributes
 
-    [SerializeField] private int _baseHP = 5;
+    [SerializeField] private SC_EnemyData data;
     [SerializeField] private int _currentHP;
-
-    [SerializeField] private int damage = 1;
     
     private NavMeshAgent agent;
     private PlayerController player;
+    private SpriteRenderer spriteRend;
 
     #endregion
 
@@ -27,7 +26,9 @@ public class Enemy : MonoBehaviour
     void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
-        _currentHP = _baseHP;
+        _currentHP = data.health;
+        spriteRend = GetComponentInChildren<SpriteRenderer>();
+        spriteRend.sprite = data.sprite;
     }
 
     void Start()
@@ -66,7 +67,7 @@ public class Enemy : MonoBehaviour
     {
         if (!other.transform.CompareTag("Player")) return;
     
-        other.GetComponent<PlayerController>().TakeDamage.Invoke(damage);
+        other.GetComponent<PlayerController>().TakeDamage.Invoke(data.damage);
         
 
     }
@@ -83,6 +84,7 @@ public class Enemy : MonoBehaviour
     void OnDie()
     {
         Debug.Log($"{gameObject.name} take damage");
+        XPManager.instance.AddXP(data.xpGained);
         Destroy(gameObject);
     }
 

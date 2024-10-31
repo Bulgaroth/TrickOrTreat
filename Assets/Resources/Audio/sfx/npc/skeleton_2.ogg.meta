@@ -1,0 +1,31 @@
+fileFormatVersion: 2
+<<<<<<< HEAD
+<<<<<<< HEAD
+guid: f8e3c51f8ef31924aa6b36c43caf3239
+=======
+guid: 99baebb768e0fed45b9a52faf4635c80
+>>>>>>> 8bf02ae ([ADD] script transition sounds)
+=======
+guid: 99baebb768e0fed45b9a52faf4635c80
+>>>>>>> 20e5c01c1e0ef68fa4b1e92e2df8a257df1ef4b0
+AudioImporter:
+  externalObjects: {}
+  serializedVersion: 7
+  defaultSettings:
+    serializedVersion: 2
+    loadType: 0
+    sampleRateSetting: 0
+    sampleRateOverride: 44100
+    compressionFormat: 1
+    quality: 1
+    conversionMode: 0
+    preloadAudioData: 0
+  platformSettingOverrides: {}
+  forceToMono: 0
+  normalize: 1
+  loadInBackground: 0
+  ambisonic: 0
+  3D: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

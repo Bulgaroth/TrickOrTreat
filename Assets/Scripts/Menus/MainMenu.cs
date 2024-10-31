@@ -11,18 +11,20 @@ public class MainMenu : MonoBehaviour
 
     public void PlayGame()
     {
-        // Launch the first scene after the menu
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneTransitionManager.LoadSceneWithTransition(SceneManager.GetActiveScene().buildIndex + 1);
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     public void OpenCredits()
     {
-        SceneManager.LoadScene("Credits");
+        SceneTransitionManager.LoadSceneWithTransition("Credits");
+        //SceneManager.LoadScene("Credits");
     }
 
     public void GoMenu()
     {
-        SceneManager.LoadScene(0);
+        SceneTransitionManager.LoadSceneWithTransition(0);
+        //SceneManager.LoadScene(0);
     }
 
     public void QuitGame()

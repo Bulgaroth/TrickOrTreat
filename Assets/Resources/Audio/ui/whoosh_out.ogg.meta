@@ -1,9 +1,5 @@
 fileFormatVersion: 2
-<<<<<<< HEAD
-guid: 20c4e8891c069a945b8f3ae6354a5903
-=======
-guid: d086566783a33e244b32c51505ec18a8
->>>>>>> 8bf02ae ([ADD] script transition sounds)
+guid: 7018a4da3c662d347b10a57057423163
 AudioImporter:
   externalObjects: {}
   serializedVersion: 7

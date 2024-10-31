@@ -53,6 +53,8 @@ public class PlayerController : MonoBehaviour
 	[HideInInspector] public UnityEvent<float> AddFireRate;
 	[HideInInspector] public UnityEvent<float> AddPowerUpEfficiency;
 
+	bool roaming = true;
+
 	#endregion
 
 	#region Unity API
@@ -66,6 +68,8 @@ public class PlayerController : MonoBehaviour
 
 	void Update()
 	{
+		if (!roaming) return;
+
 		MovePlayer();
 		RotateCamera();
 		CheckGroundType();
@@ -221,6 +225,13 @@ public class PlayerController : MonoBehaviour
 	{
 		playerData.healAmount *= (int)multiplier;
 		playerData.slowTime *= multiplier;
+	}
+
+	public void ToggleCamera(bool roaming)
+	{
+		this.roaming = roaming;
+		Cursor.lockState = roaming ? CursorLockMode.Locked : CursorLockMode.None;
+		Cursor.visible = !roaming;
 	}
 
 	#endregion

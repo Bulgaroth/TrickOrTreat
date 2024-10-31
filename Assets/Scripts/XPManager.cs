@@ -64,6 +64,7 @@ public class XPManager : MonoBehaviour
 		}
 
 		choiceMenu.SetActive(true);
+		playerController.ToggleCamera(false);
 		// TODO pause.
 		// TODO Lock camera & free cursor.
 	}
@@ -87,5 +88,6 @@ public class XPManager : MonoBehaviour
 		// TODO unpause
 		// TODO Free camera & lock cursor.
 		choiceMenu.SetActive(false);
+		playerController.ToggleCamera(true);
 	}
 }

@@ -133,7 +133,6 @@ public class PlayerController : MonoBehaviour
 	{
 		if(Physics.Raycast(transform.position, -transform.up, out RaycastHit hit, 1, groundLayers))
 		{
-			print(hit.collider.tag);
 			HeadBobbing.GroundType groundType = hit.collider.tag switch
 			{
 				"Ground_Grass" => HeadBobbing.GroundType.Grass,
@@ -179,8 +178,6 @@ public class PlayerController : MonoBehaviour
 
 	private void OnHeal(int heal)
 	{
-		Debug.Log($"Player heal {heal} hp");
-		
 		playerHP += heal;
 		if (playerHP > playerData.playerBaseHP)
 			playerHP = playerData.playerBaseHP;
@@ -199,8 +196,7 @@ public class PlayerController : MonoBehaviour
 
 	void OnTakeDamage(int damage)
 	{
-		Debug.Log($"Player take {damage} damage");
-		
+		//TODO Feedback hit
 		playerHP -= damage;
 		healthBar.SetHealth(playerHP);
 

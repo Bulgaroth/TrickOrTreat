@@ -27,7 +27,6 @@ public class CandyBullet : MonoBehaviour
 
 		if (other.transform.CompareTag("Player")) return;
 
-		print(other.tag + " " + other.name);
 		if (other.transform.CompareTag("Enemy"))
 		{
 			Debug.Log("Hit Enemy");

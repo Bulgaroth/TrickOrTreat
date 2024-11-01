@@ -127,8 +127,6 @@ public class Enemy : MonoBehaviour
 
 	void PlayHitSound(bool headshot)
 	{
-		if(headshot) print(name + " hit in the head");
-		else print(name + " hit");
 		var sounds = headshot ? headshotSounds : hitSounds;
 		aS.PlayOneShot(sounds[Random.Range(0, sounds.Length)]);
 	}

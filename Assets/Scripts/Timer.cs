@@ -19,7 +19,6 @@ public class Timer : MonoBehaviour
 	{
 		remaningTime = starterTime;
 		TimerText.color = Color.white;
-
 	}
 
 	void Update()

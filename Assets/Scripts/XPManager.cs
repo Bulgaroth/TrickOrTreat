@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -7,11 +8,11 @@ using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
 
 public class XPManager : MonoBehaviour
 {
-	private const int NB_KILLS_TREAT = 10;
-	private const int NB_KILLS_DOUBLE_TREAT = 20;
-	private const int NB_KILLS_TRIPLE_TREAT = 30;
-	private const int NB_KILLS_MONSTER_TREAT = 50;
-	private const int NB_KILLS_SUGAR_RUSH = 80;
+	private const int NB_KILLS_TREAT = 1;
+	private const int NB_KILLS_DOUBLE_TREAT = 2;
+	private const int NB_KILLS_TRIPLE_TREAT = 3;
+	private const int NB_KILLS_MONSTER_TREAT = 4;
+	private const int NB_KILLS_SUGAR_RUSH = 5;
 
 	private const float COMBO_DECAY_TIME = 10;
 
@@ -28,19 +29,23 @@ public class XPManager : MonoBehaviour
 
 	[SerializeField] private PlayerController playerController;
 	[SerializeField] private GameManager gameManager;
+	[SerializeField] private MusicManager musicManager;
 
 	[SerializeField] private AudioClip[] narratorComments;
 	[SerializeField] private AudioSource aS;
 	[SerializeField] private TextMeshProUGUI scoreTxt;
+
 	private int score;
 	private int scoreIncrement = 1;
 
 	private int currentXP;
-	private int nextLvlXP = 3;
+	private int nextLvlXP = 300;
 
 	private int killStreak;
 	private float comboTimer = 10;
 	private bool onCombo;
+
+	private bool paused;
 
 	private GameObject[] currentChoices = new GameObject[3];
 
@@ -50,11 +55,16 @@ public class XPManager : MonoBehaviour
 	private void Awake() => instance = this;
 	#endregion
 
-	private void Start() => xpBar.maxValue = nextLvlXP;
+	private void Start()
+	{
+		xpBar.maxValue = nextLvlXP;
+		playerController.TakeDamage.AddListener(StopKillStreak);
+	}
+	
 
 	private void Update()
 	{
-		if (!onCombo) return;
+		if (!onCombo || paused) return;
 
 		comboTimer -= Time.deltaTime;
 		UpdateComboBar();
@@ -73,11 +83,12 @@ public class XPManager : MonoBehaviour
 		UpdateKillStreak();
 	}
 
-	public void StopKillStreak()
+	public void StopKillStreak(int _ = 0)
 	{
 		killStreak = 0;
 		onCombo = false;
 		LeanTween.moveLocalX(medal, -1400, 0.2f).setEaseInOutBack();
+		musicManager.ChangeTrackLevel(false);
 	}
 
 	private void NextLvl()
@@ -117,21 +128,25 @@ public class XPManager : MonoBehaviour
 			case NB_KILLS_DOUBLE_TREAT:
 				aS.PlayOneShot(narratorComments[1]);
 				medalImg.sprite = medalSprites[1];
+				musicManager.ChangeTrackLevel(true);
 				score += 200;
 				break;
 			case NB_KILLS_TRIPLE_TREAT:
 				aS.PlayOneShot(narratorComments[2]);
 				medalImg.sprite = medalSprites[2];
+				musicManager.ChangeTrackLevel(true);
 				score += 300;
 				break;
 			case NB_KILLS_MONSTER_TREAT:
 				aS.PlayOneShot(narratorComments[3]);
 				medalImg.sprite = medalSprites[3];
+				musicManager.ChangeTrackLevel(true);
 				score += 1000;
 				break;
 			case NB_KILLS_SUGAR_RUSH:
 				aS.PlayOneShot(narratorComments[4]);
 				medalImg.sprite = medalSprites[4];
+				musicManager.ChangeTrackLevel(true);
 				score += 2000;
 				scoreIncrement = 3;
 				scoreTxt.color = Color.yellow;
@@ -150,7 +165,7 @@ public class XPManager : MonoBehaviour
 			prefabStack.RemoveAt(prefabIndex);
 			currentChoices[i] = obj;
 		}
-
+		paused = true;
 		choiceMenu.SetActive(true);
 		playerController.ToggleCamera(false);
 		gameManager.Pause();
@@ -176,5 +191,6 @@ public class XPManager : MonoBehaviour
 		choiceMenu.SetActive(false);
 		playerController.ToggleCamera(true);
 		gameManager.Play();
+		paused = false;
 	}
 }

@@ -13583,7 +13583,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 244a5f7f7b4041f41a2c60abd9cbaa9f, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.23
+  m_Volume: 0
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -14271,7 +14271,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: fa5a02494bac6e64f9d61a147fabe7d8, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.2
+  m_Volume: 0
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -32438,7 +32438,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: a3885aa7256f07146aeb0adc2a659ced, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.4
+  m_Volume: 0
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -33958,7 +33958,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxVolumes:
-  - 0.5
   - 0.23
   - 0.2
   - 0.25
@@ -34737,7 +34736,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: ceaad5f1336edbe4eaa745aab512c7dc, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.25
+  m_Volume: 0
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -51388,6 +51387,7 @@ MonoBehaviour:
   - {fileID: 9168022118752059496, guid: b46175b0456d8f24badff6d4eec9705f, type: 3}
   playerController: {fileID: 2078565824}
   gameManager: {fileID: 1546656003}
+  musicManager: {fileID: 1159138232}
   narratorComments:
   - {fileID: 8300000, guid: 797bacee0fd1a8a4087b0ebe1aae548d, type: 3}
   - {fileID: 8300000, guid: c36590c3e5d430f4588f704a445ee2f5, type: 3}

@@ -103,7 +103,7 @@ public class Enemy : MonoBehaviour
 	void OnDie()
 	{
 		Instantiate(deathParticles, transform.position + Vector3.up, Quaternion.identity);
-		XPManager.instance.AddXP(data.xpGained);
+		XPManager.instance.RegisterDeath(data.scoreGained);
 		visuals.SetActive(false);
 		dead = true;
 		agent.enabled = false;

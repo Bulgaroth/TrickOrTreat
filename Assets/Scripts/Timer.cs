@@ -44,6 +44,8 @@ public class Timer : MonoBehaviour
 			remaningTime = 0;
 			TimerText.color = Color.red;
 		}
+
+		//TODO Stop
 		TimerText.text = string.Format("{0:00}:{1:00}", minutes, secondes);
 	}
 }

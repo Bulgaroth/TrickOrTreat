@@ -7,6 +7,6 @@ public class SC_EnemyData : ScriptableObject
 {
     [Space] public int health;
     public int damage;
-    public int xpGained;
+    public int scoreGained;
 
 }

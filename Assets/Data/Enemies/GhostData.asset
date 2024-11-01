@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50f59acec1dc1954fb8aec90fc045936, type: 3}
   m_Name: GhostData
   m_EditorClassIdentifier: 
-  sprite: {fileID: -269694165, guid: b779ecf001bfa8f4f96c31ef2d09a556, type: 3}
-  health: 5
+  health: 2
   damage: 1
-  xpGained: 1
+  scoreGained: 1

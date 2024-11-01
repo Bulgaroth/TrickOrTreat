@@ -1,11 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
 
 public class XPManager : MonoBehaviour
 {
+	private const int NB_KILLS_TREAT = 10;
+	private const int NB_KILLS_DOUBLE_TREAT = 20;
+	private const int NB_KILLS_TRIPLE_TREAT = 30;
+	private const int NB_KILLS_MONSTER_TREAT = 50;
+	private const int NB_KILLS_SUGAR_RUSH = 80;
+
+	private const float COMBO_DECAY_TIME = 10;
+
 	[SerializeField] private Slider xpBar;
+	[SerializeField] private Image ringBar;
+	[SerializeField] private Image medalImg;
+	[SerializeField] private Sprite[] medalSprites;
+	[SerializeField] private GameObject medal;
 
 	[SerializeField] private Transform[] slotParents;
 
@@ -15,8 +29,18 @@ public class XPManager : MonoBehaviour
 	[SerializeField] private PlayerController playerController;
 	[SerializeField] private GameManager gameManager;
 
+	[SerializeField] private AudioClip[] narratorComments;
+	[SerializeField] private AudioSource aS;
+	[SerializeField] private TextMeshProUGUI scoreTxt;
+	private int score;
+	private int scoreIncrement = 1;
+
 	private int currentXP;
-	private int nextLvlXP = 2;
+	private int nextLvlXP = 3;
+
+	private int killStreak;
+	private float comboTimer = 10;
+	private bool onCombo;
 
 	private GameObject[] currentChoices = new GameObject[3];
 
@@ -28,21 +52,37 @@ public class XPManager : MonoBehaviour
 
 	private void Start() => xpBar.maxValue = nextLvlXP;
 
-	public void AddXP(int amount)
+	private void Update()
 	{
-		int nextXP = currentXP + amount;
-		if (nextXP < nextLvlXP) currentXP += amount;
-		else
-		{
-			NextLvl();
-			if (nextXP > nextLvlXP) currentXP = nextXP - nextLvlXP;
-		}
+		if (!onCombo) return;
+
+		comboTimer -= Time.deltaTime;
+		UpdateComboBar();
+		if (comboTimer <= 0) StopKillStreak();
+	}
+
+	public void RegisterDeath(int scoreGained)
+	{
+		if (++currentXP == nextLvlXP) NextLvl();
 
 		UpdateXPBar();
+		comboTimer = COMBO_DECAY_TIME;
+		UpdateComboBar();
+		score += scoreIncrement * scoreGained;
+		scoreTxt.text = $"Score : {score}";
+		UpdateKillStreak();
+	}
+
+	public void StopKillStreak()
+	{
+		killStreak = 0;
+		onCombo = false;
+		LeanTween.moveLocalX(medal, -1400, 0.2f).setEaseInOutBack();
 	}
 
 	private void NextLvl()
 	{
+		aS.PlayOneShot(narratorComments[^1]);
 		currentXP = 0;
 		nextLvlXP = Mathf.RoundToInt(nextLvlXP * 1.5f);
 		UpdateXPBar(true);
@@ -53,6 +93,50 @@ public class XPManager : MonoBehaviour
 	{
 		if (newMax) xpBar.maxValue = nextLvlXP;
 		xpBar.value = currentXP;
+	}
+
+	private void UpdateComboBar() => ringBar.fillAmount = comboTimer / COMBO_DECAY_TIME;
+
+	private void StartCombo()
+	{
+		comboTimer = COMBO_DECAY_TIME;
+		onCombo = true;
+		ringBar.gameObject.SetActive(true);
+	}
+
+	private void UpdateKillStreak()
+	{
+		switch(++killStreak)
+		{
+			case NB_KILLS_TREAT:
+				aS.PlayOneShot(narratorComments[0]);
+				medalImg.sprite = medalSprites[0];
+				LeanTween.moveLocalX(medal, -860, 0.2f).setEaseInOutBack().setOnComplete(StartCombo);
+				score += 100;
+				break;
+			case NB_KILLS_DOUBLE_TREAT:
+				aS.PlayOneShot(narratorComments[1]);
+				medalImg.sprite = medalSprites[1];
+				score += 200;
+				break;
+			case NB_KILLS_TRIPLE_TREAT:
+				aS.PlayOneShot(narratorComments[2]);
+				medalImg.sprite = medalSprites[2];
+				score += 300;
+				break;
+			case NB_KILLS_MONSTER_TREAT:
+				aS.PlayOneShot(narratorComments[3]);
+				medalImg.sprite = medalSprites[3];
+				score += 1000;
+				break;
+			case NB_KILLS_SUGAR_RUSH:
+				aS.PlayOneShot(narratorComments[4]);
+				medalImg.sprite = medalSprites[4];
+				score += 2000;
+				scoreIncrement = 3;
+				scoreTxt.color = Color.yellow;
+				break;
+		}
 	}
 
 	private void ShowNextLvlChoices()

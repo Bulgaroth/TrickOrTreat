@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
 	#region Attributes
 
 	[SerializeField] private GameObject deathMenu;
+	[SerializeField] private GameObject winMenu;
 
 	private PoolManager PoolManager;
 	[SerializeField] private SpawnManager SpawnManager;
@@ -62,13 +63,20 @@ public class GameManager : MonoBehaviour
 		timer.paused = false;
 	}
 
-
 	void OnPlayerDie()
     {
 		//TODO
 		deathMenu.SetActive(true);
 		Pause();
-    }
+		player.ToggleCamera(false);
+	}
+
+	public void OnWin()
+	{
+		winMenu.SetActive(true);
+		Pause();
+		player.ToggleCamera(false);
+	}
 
     #endregion
 

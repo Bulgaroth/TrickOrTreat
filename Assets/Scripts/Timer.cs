@@ -6,11 +6,11 @@ using TMPro;
 public class Timer : MonoBehaviour
 {
 	// attributes
+	[SerializeField] private GameManager gameManager;
 	[SerializeField] TextMeshProUGUI TimerText;
 	[SerializeField] float starterTime;
+
 	float remaningTime;
-	int minutes;
-	int secondes;
 
 	public bool paused;
 
@@ -25,27 +25,20 @@ public class Timer : MonoBehaviour
 	void Update()
 	{
 		if (paused) return;
-		IncrementTimer();
-		TimerDisplay();
-	}
 
-	public void IncrementTimer()
-	{
-		if (remaningTime > 0)
-			remaningTime -= Time.deltaTime;
-		minutes = Mathf.FloorToInt(remaningTime / 60);
-		secondes = Mathf.FloorToInt(remaningTime % 60);
-	}
+		remaningTime -= Time.deltaTime;
+		
 
-	public void TimerDisplay()
-	{
-		if (remaningTime < 0)
+		if (remaningTime <= 0)
 		{
 			remaningTime = 0;
-			TimerText.color = Color.red;
+			TimerText.color = Color.green;
+			gameManager.OnWin();
+			paused = true;
 		}
 
-		//TODO Stop
+		int minutes = Mathf.RoundToInt(remaningTime / 60);
+		int secondes = Mathf.RoundToInt(remaningTime % 60);
 		TimerText.text = string.Format("{0:00}:{1:00}", minutes, secondes);
 	}
 }

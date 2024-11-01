@@ -52452,11 +52452,11 @@ MonoBehaviour:
   ringBar: {fileID: 1073844315}
   medalImg: {fileID: 329726684}
   medalSprites:
-  - {fileID: 21300000, guid: a5fbda7073f30f4429945dbd00a14d6a, type: 3}
-  - {fileID: 21300000, guid: 1e6a7b6efacb4b544ab60e867c7a57aa, type: 3}
-  - {fileID: -1948665765, guid: 4422d2400fdf9894e88e3af3a4c77911, type: 3}
-  - {fileID: -268483542, guid: 98a06305004544445912e860df7dd338, type: 3}
-  - {fileID: -675072993, guid: 4422d2400fdf9894e88e3af3a4c77911, type: 3}
+  - {fileID: -1179987414, guid: fb2e59908fa18334abc6a622c8f0a1ed, type: 3}
+  - {fileID: -208423289, guid: fb2e59908fa18334abc6a622c8f0a1ed, type: 3}
+  - {fileID: 744164679, guid: fb2e59908fa18334abc6a622c8f0a1ed, type: 3}
+  - {fileID: -1691563805, guid: fb2e59908fa18334abc6a622c8f0a1ed, type: 3}
+  - {fileID: -1882312264, guid: fb2e59908fa18334abc6a622c8f0a1ed, type: 3}
   medal: {fileID: 1424086407}
   slotParents:
   - {fileID: 1071783601}

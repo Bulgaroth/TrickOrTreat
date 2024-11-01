@@ -23,7 +23,7 @@ public class SC_PlayerData : ScriptableObject
 		playerSpeed = 10;
 		addedDamage = 0;
 		healAmount = 5;
-		slowTime = 0;
+		slowTime = 3;
 		fireRate = 0.5f;
 	}
 }

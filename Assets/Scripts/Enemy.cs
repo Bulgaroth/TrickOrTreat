@@ -49,14 +49,14 @@ public class Enemy : MonoBehaviour
 
 	void Update()
 	{
-		if (dead || paused) return;
+		if (dead) return;
+
+		Vector3 targetPostition = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z);
+		transform.LookAt(targetPostition);
+
+		if (paused) return;
 
 		if (monsterSoundReady) PlayMonsterSound();
-		//transform.LookAt(player.transform, Vector3.up);
-		
-		Vector3 targetPostition = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z );
-		transform.LookAt(targetPostition);
-		
 		agent.SetDestination(player.transform.position);
 	}
 

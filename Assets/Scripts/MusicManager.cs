@@ -24,7 +24,6 @@ public class MusicManager : MonoBehaviour
 
 	private IEnumerator FadeOut(int trackIndex)
 	{
-		print(trackIndex);
 		while (tracks[trackIndex].volume >= 0)
 		{
 			tracks[trackIndex].volume -= Time.deltaTime * fadeRate;

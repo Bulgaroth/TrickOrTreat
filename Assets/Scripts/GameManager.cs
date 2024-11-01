@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class GameManager : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class GameManager : MonoBehaviour
 
 	[SerializeField] private GameObject deathMenu;
 	[SerializeField] private GameObject winMenu;
+	[SerializeField] private GameObject escapeMenu;
+	[SerializeField] private Volume grayScale;
 
 	private PoolManager PoolManager;
 	[SerializeField] private SpawnManager SpawnManager;
@@ -19,9 +22,14 @@ public class GameManager : MonoBehaviour
 	[SerializeField] private PlayerController player;
 	[SerializeField] private SC_PlayerData playerData;
 	[SerializeField] private Timer timer;
-	
+
+	private float bulletTimeEffectTimer;
+	private bool inBulletTime;
+
+	InputSystem_Actions input;
+
 	#endregion
-	
+
 	#region Unity API
 
 	private void Awake()
@@ -32,6 +40,11 @@ public class GameManager : MonoBehaviour
 		//SpawnManager = SpawnManager.Instance;
 		playerData.Clear();
 		player = FindObjectOfType<PlayerController>();
+		player.BulletTime.AddListener(StartBulletTime);
+
+		input = new();
+		input.UI.Escape.Enable();
+		input.UI.Escape.performed += ToggleEscape;
 	}
 
 	private void Start()
@@ -40,13 +53,54 @@ public class GameManager : MonoBehaviour
 		deathMenu.SetActive(false);
 	}
 
+	private void Update()
+	{
+		if(inBulletTime)
+		{
+			bulletTimeEffectTimer -= Time.deltaTime;
+			if (bulletTimeEffectTimer <= 0) StopBulletTime();
+		}
+	}
+
 	#endregion
 
 	#region Methods
 
+	private void ToggleEscape(UnityEngine.InputSystem.InputAction.CallbackContext _)
+	{
+		if (escapeMenu.activeInHierarchy)
+		{
+			Play();
+			escapeMenu.SetActive(false);
+			player.ToggleCamera(true);
+		}
+		else
+		{
+			Pause();
+			escapeMenu.SetActive(true);
+			player.ToggleCamera(false);
+		}
+	}
+
 	public PlayerController GetPlayer()
 	{
 		return player;
+	}
+
+	public void StartBulletTime()
+	{
+		print("BULLET TIME !");
+		Pause();
+		bulletTimeEffectTimer = playerData.slowTime;
+		inBulletTime = true;
+		grayScale.weight = 1f;
+	}
+
+	public void StopBulletTime()
+	{
+		Play();
+		inBulletTime = false;
+		grayScale.weight = 0f;
 	}
 
 	public void Pause()

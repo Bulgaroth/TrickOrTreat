@@ -47,6 +47,7 @@ public class PlayerController : MonoBehaviour
 	[HideInInspector] public UnityEvent<int> Heal;
 	[HideInInspector] public UnityEvent<int> TakeDamage;
 	[HideInInspector] public UnityEvent Die;
+	[HideInInspector] public UnityEvent BulletTime;
 
 	[HideInInspector] public UnityEvent<int> AddMaxLife;
 	[HideInInspector] public UnityEvent<float> AddSpeed;
@@ -192,6 +193,7 @@ public class PlayerController : MonoBehaviour
 	{
 		characterAudio.PlayOneShot(powerUpSounds[1]);
 		gunAnimator.SetTrigger("Eat");
+		BulletTime.Invoke();
 	}
 
 	void OnTakeDamage(int damage)

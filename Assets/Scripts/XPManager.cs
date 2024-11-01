@@ -1,18 +1,15 @@
-using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
 
 public class XPManager : MonoBehaviour
 {
-	private const int NB_KILLS_TREAT = 1;
-	private const int NB_KILLS_DOUBLE_TREAT = 2;
-	private const int NB_KILLS_TRIPLE_TREAT = 3;
-	private const int NB_KILLS_MONSTER_TREAT = 4;
-	private const int NB_KILLS_SUGAR_RUSH = 5;
+	private const int NB_KILLS_TREAT = 10;
+	private const int NB_KILLS_DOUBLE_TREAT = 20;
+	private const int NB_KILLS_TRIPLE_TREAT = 30;
+	private const int NB_KILLS_MONSTER_TREAT = 50;
+	private const int NB_KILLS_SUGAR_RUSH = 80;
 
 	private const float COMBO_DECAY_TIME = 10;
 
@@ -39,7 +36,7 @@ public class XPManager : MonoBehaviour
 	private int scoreIncrement = 1;
 
 	private int currentXP;
-	private int nextLvlXP = 300;
+	private int nextLvlXP = 3;
 
 	private int killStreak;
 	private float comboTimer = 10;

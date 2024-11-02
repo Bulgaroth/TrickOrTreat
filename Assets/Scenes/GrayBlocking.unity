@@ -34937,11 +34937,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxVolumes:
-  - 0.23
-  - 0.2
-  - 0.25
-  - 0.4
-  fadeRate: 1
+  - 0.5
+  - 0.5
+  - 0.5
+  - 0.5
+  fadeRate: 0.3
 --- !u!4 &1159138233
 Transform:
   m_ObjectHideFlags: 0
@@ -54239,7 +54239,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6dbd9908bf812524eb17c57da467899b, type: 2}
+  - {fileID: 2100000, guid: cd009981c30ee084eb4e0f5c7f49c51c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -72427,7 +72427,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6dbd9908bf812524eb17c57da467899b, type: 2}
+  - {fileID: 2100000, guid: cd009981c30ee084eb4e0f5c7f49c51c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

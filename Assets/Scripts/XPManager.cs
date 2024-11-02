@@ -42,7 +42,7 @@ public class XPManager : MonoBehaviour
 	private float comboTimer = 10;
 	private bool onCombo;
 
-	private bool paused;
+	public bool paused;
 
 	private GameObject[] currentChoices = new GameObject[3];
 

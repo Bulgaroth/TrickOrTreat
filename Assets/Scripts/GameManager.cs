@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
 
 	private PoolManager PoolManager;
 	[SerializeField] private SpawnManager SpawnManager;
-
+	[SerializeField] private XPManager XPManager;
 	[SerializeField] private PlayerController player;
 	[SerializeField] private SC_PlayerData playerData;
 	[SerializeField] private Timer timer;
@@ -73,12 +73,14 @@ public class GameManager : MonoBehaviour
 			Play();
 			escapeMenu.SetActive(false);
 			player.ToggleCamera(true);
+			XPManager.paused = false;
 		}
 		else
 		{
 			Pause();
 			escapeMenu.SetActive(true);
 			player.ToggleCamera(false);
+			XPManager.paused = true;
 		}
 	}
 

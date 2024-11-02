@@ -50757,6 +50757,7 @@ MonoBehaviour:
   escapeMenu: {fileID: 910861305}
   grayScale: {fileID: 1884077471}
   SpawnManager: {fileID: 1953952572}
+  XPManager: {fileID: 1642443711}
   player: {fileID: 2078565824}
   playerData: {fileID: 11400000, guid: af17d356061d4bd42a71e4690bc2caa1, type: 2}
   timer: {fileID: 2128629934}
@@ -52481,6 +52482,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 7eec55f8c187c91489ca3f3951b7f6cc, type: 3}
   aS: {fileID: 933162076}
   scoreTxt: {fileID: 1865659987}
+  paused: 0
 --- !u!1001 &1646424014
 PrefabInstance:
   m_ObjectHideFlags: 0

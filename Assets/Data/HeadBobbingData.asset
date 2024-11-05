@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: HeadBobbingData
   m_EditorClassIdentifier: 
   frequency: 20
-  amplitude: 0.005
+  amplitude: 0.003
